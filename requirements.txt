@@ -1,3 +1,4 @@
+/home/adminuser/venv/bin/python -m pip install --upgrade pip
 altair==5.1.2
 asttokens==2.4.0
 attrs==19.3.0
