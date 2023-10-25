@@ -9,7 +9,7 @@ cachetools==5.3.1
 certifi==2019.11.28
 chardet==3.0.4
 charset-normalizer==3.3.0
-Click==7.0
+#Click==7.0
 cloud-init==20.1
 colorama==0.4.3
 comm==0.1.4
