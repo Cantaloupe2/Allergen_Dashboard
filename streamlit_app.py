@@ -38,7 +38,7 @@ st.write(yearsdf.value_counts().sort_index())
 
 import pandas as pd
 
-df = pd.read_csv('Diet Data No Names.csv')
+df = pd.read_csv('diet_data_no_names.csv')
 sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','Date \nContacted'], axis=1)
