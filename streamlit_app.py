@@ -88,7 +88,7 @@ if add_sidebar == "1":
 if add_sidebar == "2":
   col1, col2, col3 = st.columns([3,2,2])
   with col1:
-    allergen = 5
+    allergen = "book"
     st.write(f"Most Common Alergen: **{allergen}**")
     st.write(f"Most Correlated Alergens: **{allergen}** and **{allergen}**")
   with col2:
