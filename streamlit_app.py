@@ -86,4 +86,13 @@ if add_sidebar == "1":
   st.pyplot()
 
 if add_sidebar == "2":
-  st.write("Hello")
+  col1, col2, col3 = st.columns(3)
+  with col1:
+    st.write("Hello")
+    st.write("Yellow")
+  with col2:
+    st.write("Buisness")
+    st.write("Numbers")
+    st.write("Buisness")
+  with col3:
+    st.write("123456")
