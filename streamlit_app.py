@@ -92,7 +92,7 @@ if add_sidebar == "2":
     average_allergies = 2.5
     st.write(f"Most Common Alergen: **{allergen}**")
     st.write(f"Most Correlated Alergens: **{allergen}** and **{allergen}**")
-    st.write(f"Students list an average of **{average_allergies}** allergies.)
+    st.write(f"Students list an average of **{average_allergies}** allergies.")
   with col2:
     st.write("Buisness")
     st.write("Numbers")
