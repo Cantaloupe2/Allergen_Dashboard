@@ -90,7 +90,7 @@ if add_sidebar == "2":
   with col1:
     st.write("Most Common Alergen: ")
     st.write("peanuts"+"\n\n")
-    
+    st.write("\n")
     st.write("Most Correlated Alergens: ")
     st.write("Peanuts "+ " and "+"Treenuts"+"\n\n")
   with col2:
