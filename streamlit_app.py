@@ -86,7 +86,7 @@ if add_sidebar == "1":
   st.pyplot()
 
 if add_sidebar == "2":
-  col1, col2, col3 = st.columns(3)
+  col1, col2, col3 = st.columns([1,2,2)
   with col1:
     st.write("Most Common Alergen: "+"peanuts")
     st.write("Yellow")
