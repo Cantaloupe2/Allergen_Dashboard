@@ -90,9 +90,11 @@ if add_sidebar == "2":
   with col1:
     allergen = "Peanuts"
     average_allergies = 2.5
+    hall = "Landon"
     st.write(f"Most Common Alergen: **{allergen}**")
     st.write(f"Most Correlated Alergens: **{allergen}** and **{allergen}**")
     st.write(f"Students list an average of **{average_allergies}** allergies.")
+    st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
   with col2:
     st.write("Buisness")
     st.write("Numbers")
