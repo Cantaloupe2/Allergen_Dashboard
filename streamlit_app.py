@@ -113,7 +113,7 @@ plot = sns.heatmap(matrix, mask=mask, cmap=cmap, vmax=.3, center=0,
 #st.pyplot(plot.get_figure())
 
 if add_sidebar == "2":
-  col1, col2, col3 = st.columns([2,2,2])
+  col1, col2 = st.columns([1,2])
   with col1:
     allergen = "Peanuts"
     average_allergies = 2.5
@@ -124,5 +124,5 @@ if add_sidebar == "2":
     st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
   with col2:
     st.pyplot(plot.get_figure())
-  with col3:
-    st.write("123456")
+  #with col3:
+  #  st.write("123456")
