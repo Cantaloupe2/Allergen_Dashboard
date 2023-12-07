@@ -60,7 +60,7 @@ fig = px.imshow(matrix,text_auto=True)
 
 # find most common value
 st.write(ndf.sum())
-allergen_max = ndf.sum().idmax()
+allergen_max = ndf.sum().idxmax()
 
 # find most correlated values
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
