@@ -62,7 +62,7 @@ fig = px.imshow(matrix,text_auto=True)
 allergen_max = ndf.sum().idxmax()
 second_most_df = ndf.sum()
 second_most_df[allergen_max]=0
-allergen_max2 = second_most_df.sum().idxmax()
+allergen_max2 = second_most_df.idxmax()
 
 # find most correlated values
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
