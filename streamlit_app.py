@@ -71,10 +71,18 @@ allergen_max2 = second_most_df.idxmax()
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
+flag = 0
 for index, value in sol.items():
+  if flag == 2:
+    break
+  if flag == 1:
+    allergen3 = index[0]
+    allergen4 = index[1]
   allergen1 = index[0]
   allergen2 = index[1]
-  break
+  flag = flag + 1
+
+  
 
 
 #######################################################
@@ -87,8 +95,8 @@ with col1:
   st.write(f"Most Common Dietary Issue: **{allergen_max}**")
   st.write(f"Second Most Common Dietary Issue: **{allergen_max2}**")
   st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
+  st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
   st.write(f"Students list an average of **{str(average_allergens)[0:3]}** allergies.")
-  st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
 with col2:
   st.plotly_chart(fig)
 #with col3:
