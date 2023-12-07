@@ -73,9 +73,8 @@ if add_sidebar == "1":
   sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
                'Specialist','Intial Concern','Hall (Living/Eating)',
                'Class Type','dates', 'Date \nContacted'], axis=1)
-  
   cdf=sdf.dropna(how='all')
-  print(cdf)
+  st.write(cdf)
   
   ndf = cdf.fillna(0)
   
