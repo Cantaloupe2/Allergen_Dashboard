@@ -75,7 +75,7 @@ if add_sidebar == "1":
                'Class Type','dates', 'Date \nContacted'], axis=1)
   
   cdf=sdf.dropna(how='all')
-  display(cdf)
+  print(cdf)
   
   ndf = cdf.fillna(0)
   
