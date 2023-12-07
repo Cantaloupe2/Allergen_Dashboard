@@ -62,7 +62,8 @@ fig = px.imshow(matrix,text_auto=True)
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
-allergen_1 = sol[1,1]
+allergen_1 = sol.iloc[0,0]
+allergen_2 = sol.iloc[0,1]
 
 #######################################################
 col1, col2 = st.columns([1,2])
@@ -72,7 +73,7 @@ with col1:
   hall = "Landon"
   st.subheader(f"Response Summary")
   st.write(f"Most Common Alergen: **{allergen}**")
-  st.write(f"Most Correlated Alergens: **{allergen}** and **{allergen}**")
+  st.write(f"Most Correlated Alergens: **{allergen1}** and **{allergen2}**")
   st.write(f"Students list an average of **{average_allergies}** allergies.")
   st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
 with col2:
