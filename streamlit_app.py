@@ -60,6 +60,7 @@ fig = px.imshow(matrix,text_auto=True)
 
 # find most common value
 st.write(ndf.sum())
+allergen_max = ndf.sum().idmax()
 
 # find most correlated values
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
@@ -77,7 +78,7 @@ with col1:
   average_allergies = 2.5
   hall = "Landon"
   st.subheader(f"Response Summary")
-  st.write(f"Most Common Alergen: **{allergen}**")
+  st.write(f"Most Common Alergen: **{allergen_max}**")
   st.write(f"Most Correlated Alergens: **{allergen1}** and **{allergen2}**")
   st.write(f"Students list an average of **{average_allergies}** allergies.")
   st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
