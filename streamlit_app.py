@@ -3,7 +3,7 @@ import streamlit as st
 from string import ascii_letters
 import numpy as np
 import pandas as pd
-#import seaborn as sns
+import seaborn as sns
 import matplotlib.pyplot as plt
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
