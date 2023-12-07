@@ -78,8 +78,9 @@ for index, value in sol.items():
   if flag == 1:
     allergen3 = index[0]
     allergen4 = index[1]
-  allergen1 = index[0]
-  allergen2 = index[1]
+  if flag == 0:
+    allergen1 = index[0]
+    allergen2 = index[1]
   flag = flag + 1
 
   
