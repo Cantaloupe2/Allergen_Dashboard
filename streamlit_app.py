@@ -87,7 +87,7 @@ for col in columns_to_convert:
     ndf[col] = ndf[col].replace('x', 1)
     ndf[col] = ndf[col].replace(' ',0)
 matrix = ndf.corr()
-print(matrix)
+st.write(matrix)
 
 #######
   
