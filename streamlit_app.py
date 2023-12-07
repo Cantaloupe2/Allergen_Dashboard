@@ -16,7 +16,7 @@ diet_data = pd.read_csv('diet_data_no_names.csv')
 
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates = diet_data['Date \nContacted']
-diet_data['dates'] =dates = diet_data['Date \nContacted']
+diet_data['dates'] =dates
 
 if add_sidebar == "1":
 
