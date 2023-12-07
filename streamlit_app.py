@@ -91,29 +91,29 @@ if add_sidebar == "1":
   #######
   
   
-  
-  sns.set_theme(style="white")
-  
-  # Generate a mask for the upper triangle
-  mask = np.triu(np.ones_like(matrix, dtype=bool))
-  
-  # Set up the matplotlib figure
-  fig, ax = plt.subplots(figsize=(11, 11))
-  
-  # Generate a custom diverging colormap
-  cmap = sns.diverging_palette(230, 20, as_cmap=True)
-  
-  # Draw the heatmap with the mask and correct aspect ratio
-  plot = sns.heatmap(matrix, mask=mask, cmap=cmap, vmax=.3, center=0,
-              square=True, linewidths=.5, cbar_kws={"shrink": .5})
 
-  #fig_html = mpld3.fig_to_html(fig)
-  #components.html(fig_html, height=600)
-  
-  st.pyplot(plot.get_figure())
+sns.set_theme(style="white")
+
+# Generate a mask for the upper triangle
+mask = np.triu(np.ones_like(matrix, dtype=bool))
+
+# Set up the matplotlib figure
+fig, ax = plt.subplots(figsize=(11, 11))
+
+# Generate a custom diverging colormap
+cmap = sns.diverging_palette(230, 20, as_cmap=True)
+
+# Draw the heatmap with the mask and correct aspect ratio
+plot = sns.heatmap(matrix, mask=mask, cmap=cmap, vmax=.3, center=0,
+            square=True, linewidths=.5, cbar_kws={"shrink": .5})
+
+#fig_html = mpld3.fig_to_html(fig)
+#components.html(fig_html, height=600)
+
+#st.pyplot(plot.get_figure())
 
 if add_sidebar == "2":
-  col1, col2, col3 = st.columns([3,2,2])
+  col1, col2, col3 = st.columns([2,2,2])
   with col1:
     allergen = "Peanuts"
     average_allergies = 2.5
@@ -123,8 +123,6 @@ if add_sidebar == "2":
     st.write(f"Students list an average of **{average_allergies}** allergies.")
     st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
   with col2:
-    st.write("Buisness")
-    st.write("Numbers")
-    st.write("Buisness")
+    st.pyplot(plot.get_figure())
   with col3:
     st.write("123456")
