@@ -59,7 +59,7 @@ cmap = sns.diverging_palette(230, 20, as_cmap=True)
 fig = px.imshow(matrix,text_auto=True)
 
 # find most correlated values
-sol = (matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
+sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
 st.write(sol)
