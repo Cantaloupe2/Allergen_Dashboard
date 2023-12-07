@@ -3,7 +3,19 @@
 # numpy==1.11.1
 # pandas==0.18.1
 # seaborn==0.7.0
-seaborn
+# seaborn
+# numpy
+# pandas
+# matplotlib
+
 numpy
 pandas
+pandas-datareader
 matplotlib
+seaborn
+plotly
+Pillow
+scipy
+statsmodels
+scikit-learn
+streamlit
