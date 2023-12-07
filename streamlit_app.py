@@ -104,13 +104,13 @@ if add_sidebar == "1":
   cmap = sns.diverging_palette(230, 20, as_cmap=True)
   
   # Draw the heatmap with the mask and correct aspect ratio
-  sns.heatmap(matrix, mask=mask, cmap=cmap, vmax=.3, center=0,
+  plot = sns.heatmap(matrix, mask=mask, cmap=cmap, vmax=.3, center=0,
               square=True, linewidths=.5, cbar_kws={"shrink": .5})
 
-  fig_html = mpld3.fig_to_html(fig)
-  components.html(fig_html, height=600)
+  #fig_html = mpld3.fig_to_html(fig)
+  #components.html(fig_html, height=600)
   
-  st.pyplot()
+  st.pyplot(plot.get_figure())
 
 if add_sidebar == "2":
   col1, col2, col3 = st.columns([3,2,2])
