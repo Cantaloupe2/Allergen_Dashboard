@@ -71,24 +71,24 @@ if add_sidebar == "1":
 
   #################################################
 
-  df = diet_data
-  sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
-               'Specialist','Intial Concern','Hall (Living/Eating)',
-               'Class Type','dates', 'Date \nContacted'], axis=1)
-  cdf=sdf.dropna(how='all')
-  
-  ndf = cdf.fillna(0)
-  columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
-                        'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
-                        'Vegetarian','Halal','Kosher']
+df = diet_data
+sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
+             'Specialist','Intial Concern','Hall (Living/Eating)',
+             'Class Type','dates', 'Date \nContacted'], axis=1)
+cdf=sdf.dropna(how='all')
 
-  for col in columns_to_convert:
-      ndf[col] = ndf[col].replace('x', 1)
-      ndf[col] = ndf[col].replace(' ',0)
-  matrix = ndf.corr()
-  print(matrix)
+ndf = cdf.fillna(0)
+columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
+                      'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
+                      'Vegetarian','Halal','Kosher']
 
-  #######
+for col in columns_to_convert:
+    ndf[col] = ndf[col].replace('x', 1)
+    ndf[col] = ndf[col].replace(' ',0)
+matrix = ndf.corr()
+print(matrix)
+
+#######
   
   
 
