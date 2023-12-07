@@ -59,7 +59,6 @@ cmap = sns.diverging_palette(230, 20, as_cmap=True)
 fig = px.imshow(matrix,text_auto=True)
 
 # find most common value
-st.write(ndf.sum())
 allergen_max = ndf.sum().idxmax()
 
 # find most correlated values
@@ -78,8 +77,8 @@ with col1:
   average_allergies = 2.5
   hall = "Landon"
   st.subheader(f"Response Summary")
-  st.write(f"Most Common Alergen: **{allergen_max}**")
-  st.write(f"Most Correlated Alergens: **{allergen1}** and **{allergen2}**")
+  st.write(f"Most Common Dietary Issue: **{allergen_max}**")
+  st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
   st.write(f"Students list an average of **{average_allergies}** allergies.")
   st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
 with col2:
