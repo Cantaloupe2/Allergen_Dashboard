@@ -64,7 +64,7 @@ sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .sort_values(ascending=False))
 index, value = sol.items()
 allergen1 = index[0]
-allergen2 = "index[1]
+allergen2 = index[1]
 
 #######################################################
 col1, col2 = st.columns([1,2])
