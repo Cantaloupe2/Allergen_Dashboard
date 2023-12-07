@@ -65,6 +65,7 @@ sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
 st.write(sol)
 allergen_1 = sol.iloc[0]
 allergen_2 = sol.iloc[0]
+st.write(allergen_1)
 
 #######################################################
 col1, col2 = st.columns([1,2])
