@@ -10,7 +10,7 @@ import streamlit.components.v1 as components
 import plotly.express as px
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
-st.title("MSU-Culinary Visualizations")
+st.title("Allergen Data Dashboard")
 
 add_sidebar = st.sidebar.selectbox("Page",("1","2"))
 
@@ -43,32 +43,6 @@ if add_sidebar == "1":
   st.pyplot()
   #st.write(yearsdf.value_counts().sort_index())
   #st.bar_chart(yearsdf.value_counts())
-
-
-
-
-  #########
-  
-  
-  # df = pd.read_csv('diet_data_no_names.csv')
-  # sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
-  #             'Specialist','Intial Concern','Hall (Living/Eating)',
-  #             'Class Type','Date \nContacted'], axis=1)
-  
-  #cdf=sdf.dropna(how='all')
-  #cdf
-  
-  #ndf = cdf.fillna(0)
-  
-  #columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
-  #                      'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
-  #                      'Vegetarian','Halal','Kosher']
-
-  #for col in columns_to_convert:
-  #    ndf[col] = ndf[col].replace('x', 1)
-      
-  #matrix = ndf.corr()
-  #print(matrix)
 
   #################################################
 
@@ -114,6 +88,7 @@ if add_sidebar == "2":
     allergen = "Peanuts"
     average_allergies = 2.5
     hall = "Landon"
+    st.write(f"Response Summary")
     st.write(f"Most Common Alergen: **{allergen}**")
     st.write(f"Most Correlated Alergens: **{allergen}** and **{allergen}**")
     st.write(f"Students list an average of **{average_allergies}** allergies.")
