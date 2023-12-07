@@ -77,7 +77,7 @@ if add_sidebar == "1":
   st.write(cdf)
   
   ndf = cdf.fillna(0)
-  
+  st.write(ndf)
   columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                         'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                         'Vegetarian','Halal','Kosher']
