@@ -87,7 +87,6 @@ for col in columns_to_convert:
     ndf[col] = ndf[col].replace('x', 1)
     ndf[col] = ndf[col].replace(' ',0)
 matrix = ndf.corr()
-matrix = px.data.matrix(indexed=True)
 st.write(matrix)
 
 #######
@@ -106,7 +105,7 @@ fig, ax = plt.subplots(figsize=(11, 11))
 cmap = sns.diverging_palette(230, 20, as_cmap=True)
 
 # Draw the heatmap with the mask and correct aspect ratio
-fig = px.imshow(matrix)
+fig = px.imshow(matrix,text_auto=True)
 
 #st.pyplot(plot.get_figure())
 
