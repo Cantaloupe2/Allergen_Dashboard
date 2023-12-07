@@ -105,7 +105,7 @@ fig, ax = plt.subplots(figsize=(11, 11))
 cmap = sns.diverging_palette(230, 20, as_cmap=True)
 
 # Draw the heatmap with the mask and correct aspect ratio
-fig = px.imshow(ndf)
+fig = px.imshow(matrix)
 
 #st.pyplot(plot.get_figure())
 
