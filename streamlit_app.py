@@ -58,6 +58,9 @@ cmap = sns.diverging_palette(230, 20, as_cmap=True)
 # Draw the heatmap with the mask and correct aspect ratio
 fig = px.imshow(matrix,text_auto=True)
 
+# find most common value
+st.write(ndf.sum())
+
 # find most correlated values
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
