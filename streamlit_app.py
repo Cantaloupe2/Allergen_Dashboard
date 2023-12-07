@@ -87,7 +87,7 @@ with col1:
   st.write(f"Most Common Dietary Issue: **{allergen_max}**")
   st.write(f"Second Most Common Dietary Issue: **{allergen_max2}**")
   st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
-  st.write(f"Students list an average of **{average_allergies}** allergies.")
+  st.write(f"Students list an average of **{average_allergens}** allergies.")
   st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
 with col2:
   st.plotly_chart(fig)
