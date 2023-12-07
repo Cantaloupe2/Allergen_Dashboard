@@ -58,7 +58,11 @@ cmap = sns.diverging_palette(230, 20, as_cmap=True)
 # Draw the heatmap with the mask and correct aspect ratio
 fig = px.imshow(matrix,text_auto=True)
 
-#st.pyplot(plot.get_figure())
+# find most correlated values
+sol = (matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
+                  .stack()
+                  .sort_values(ascending=False))
+st.write(sol)
 
 #######################################################
 col1, col2 = st.columns([1,2])
