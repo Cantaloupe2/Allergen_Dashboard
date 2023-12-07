@@ -104,11 +104,7 @@ fig, ax = plt.subplots(figsize=(11, 11))
 cmap = sns.diverging_palette(230, 20, as_cmap=True)
 
 # Draw the heatmap with the mask and correct aspect ratio
-plot = sns.heatmap(matrix, mask=mask, cmap=cmap, vmax=.3, center=0,
-            square=True, linewidths=.5, cbar_kws={"shrink": .5})
-
-#fig_html = mpld3.fig_to_html(fig)
-#components.html(fig_html, height=600)
+fig = px.imshow(ndf)
 
 #st.pyplot(plot.get_figure())
 
@@ -123,6 +119,6 @@ if add_sidebar == "2":
     st.write(f"Students list an average of **{average_allergies}** allergies.")
     st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
   with col2:
-    st.pyplot(plot.get_figure())
+    st.plotly_chart(fig)
   #with col3:
   #  st.write("123456")
