@@ -62,7 +62,8 @@ fig = px.imshow(matrix,text_auto=True)
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
-st.write(sol.items()[0])
+for index, value in sol.items():
+  st.write(f"Index: {index} Value: {value}")
 allergen1 = "Peanuts"
 allergen2 = "Treenuts"
 
