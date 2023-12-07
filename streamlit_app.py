@@ -63,7 +63,7 @@ sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
 for index, value in sol.items():
-  st.write(f"Index: {index} Value: {value}")
+  st.write(f"Index: {index[0]} Value: {index[1]}")
 allergen1 = "Peanuts"
 allergen2 = "Treenuts"
 
