@@ -74,10 +74,8 @@ if add_sidebar == "1":
                'Specialist','Intial Concern','Hall (Living/Eating)',
                'Class Type','dates', 'Date \nContacted'], axis=1)
   cdf=sdf.dropna(how='all')
-  st.write(cdf)
   
   ndf = cdf.fillna(0)
-  st.write(ndf)
   columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                         'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                         'Vegetarian','Halal','Kosher']
@@ -85,8 +83,6 @@ if add_sidebar == "1":
   for col in columns_to_convert:
       ndf[col] = ndf[col].replace('x', 1)
       ndf[col] = ndf[col].replace(' ',0)
-      st.write(ndf[col].unique())
-  st.write(ndf)
   matrix = ndf.corr()
   print(matrix)
 
@@ -100,7 +96,7 @@ if add_sidebar == "1":
   mask = np.triu(np.ones_like(matrix, dtype=bool))
   
   # Set up the matplotlib figure
-  f, ax = plt.subplots(figsize=(11, 11))
+  fig, ax = plt.subplots(figsize=(11, 11))
   
   # Generate a custom diverging colormap
   cmap = sns.diverging_palette(230, 20, as_cmap=True)
@@ -108,6 +104,10 @@ if add_sidebar == "1":
   # Draw the heatmap with the mask and correct aspect ratio
   sns.heatmap(matrix, mask=mask, cmap=cmap, vmax=.3, center=0,
               square=True, linewidths=.5, cbar_kws={"shrink": .5})
+
+  fig_html = mpld3.fig_to_html(fig)
+  components.html(fig_html, height=600)
+  
   st.pyplot()
 
 if add_sidebar == "2":
