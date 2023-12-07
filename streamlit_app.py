@@ -62,8 +62,8 @@ fig = px.imshow(matrix,text_auto=True)
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
-allergen_1 = sol.iloc[0,0]
-allergen_2 = sol.iloc[0,1]
+allergen_1 = sol.iloc[0][0]
+allergen_2 = sol.iloc[0][1]
 
 #######################################################
 col1, col2 = st.columns([1,2])
