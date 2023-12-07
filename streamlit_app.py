@@ -85,7 +85,7 @@ if add_sidebar == "1":
   for col in columns_to_convert:
       ndf[col] = ndf[col].replace('x', 1)
   st.write(ndf)
-  st.write(ndf.sum())
+  st.write(ndf.dtypes)
   matrix = ndf.corr()
   print(matrix)
 
