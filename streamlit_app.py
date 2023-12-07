@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import mpld3
+import streamlit.components.v1 as components
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title("MSU-Culinary Visualizations")
