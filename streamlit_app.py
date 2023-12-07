@@ -40,7 +40,7 @@ if add_sidebar == "1":
   plt.title('year of contact')
   plt.show()
   st.pyplot()
-  st.write(yearsdf.value_counts().sort_index())
+  #st.write(yearsdf.value_counts().sort_index())
   #st.bar_chart(yearsdf.value_counts())
 
 
