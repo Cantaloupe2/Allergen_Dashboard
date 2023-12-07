@@ -62,10 +62,9 @@ fig = px.imshow(matrix,text_auto=True)
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
-for index, value in sol.items():
-  st.write(f"Index: {index[0]} Value: {index[1]}")
-allergen1 = "Peanuts"
-allergen2 = "Treenuts"
+index, value sol.items():
+allergen1 = index[0]
+allergen2 = "index[1]
 
 #######################################################
 col1, col2 = st.columns([1,2])
