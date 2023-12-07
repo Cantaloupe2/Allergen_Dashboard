@@ -40,7 +40,7 @@ for col in columns_to_convert:
     ndf[col] = ndf[col].replace(' ',0)
 matrix = ndf.corr()
 
-#######
+#######################################################
   
   
 
@@ -60,18 +60,18 @@ fig = px.imshow(matrix,text_auto=True)
 
 #st.pyplot(plot.get_figure())
 
-if add_sidebar == "2":
-  col1, col2 = st.columns([1,2])
-  with col1:
-    allergen = "Peanuts"
-    average_allergies = 2.5
-    hall = "Landon"
-    st.subheader(f"Response Summary")
-    st.write(f"Most Common Alergen: **{allergen}**")
-    st.write(f"Most Correlated Alergens: **{allergen}** and **{allergen}**")
-    st.write(f"Students list an average of **{average_allergies}** allergies.")
-    st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
-  with col2:
-    st.plotly_chart(fig)
-  #with col3:
-  #  st.write("123456")
+#######################################################
+col1, col2 = st.columns([1,2])
+with col1:
+  allergen = "Peanuts"
+  average_allergies = 2.5
+  hall = "Landon"
+  st.subheader(f"Response Summary")
+  st.write(f"Most Common Alergen: **{allergen}**")
+  st.write(f"Most Correlated Alergens: **{allergen}** and **{allergen}**")
+  st.write(f"Students list an average of **{average_allergies}** allergies.")
+  st.write(f"Correlation matrix indicates **{hall}** may have an abnormally high number of **{allergen}** allergies")
+with col2:
+  st.plotly_chart(fig)
+#with col3:
+#  st.write("123456")
