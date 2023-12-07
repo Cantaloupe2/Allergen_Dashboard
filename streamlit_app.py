@@ -72,7 +72,7 @@ if add_sidebar == "1":
   df = diet_data
   sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
                'Specialist','Intial Concern','Hall (Living/Eating)',
-               'Class Type','dates'], axis=1)
+               'Class Type','dates', 'Date \nContacted'], axis=1)
   
   cdf=sdf.dropna(how='all')
   cdf
