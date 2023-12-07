@@ -1,13 +1,3 @@
-# matplotlib==1.5.1
-# matplotlib-inline==0.1.6
-# numpy==1.11.1
-# pandas==0.18.1
-# seaborn==0.7.0
-# seaborn
-# numpy
-# pandas
-# matplotlib
-
 numpy
 pandas
 pandas-datareader
