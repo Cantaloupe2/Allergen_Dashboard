@@ -35,9 +35,12 @@ columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                       'Vegetarian','Halal','Kosher']
 
+total_allergens = 0 
 for col in columns_to_convert:
     ndf[col] = ndf[col].replace('x', 1)
     ndf[col] = ndf[col].replace(' ',0)
+    total_allergens = total_allergens + ndf[col].sum()
+average_allergens = total_allergens/len(ndf)
 matrix = ndf.corr()
 
 #######################################################
@@ -72,6 +75,7 @@ for index, value in sol.items():
   allergen1 = index[0]
   allergen2 = index[1]
   break
+
 
 #######################################################
 col1, col2 = st.columns([1,2])
