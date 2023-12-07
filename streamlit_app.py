@@ -62,9 +62,10 @@ fig = px.imshow(matrix,text_auto=True)
 sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
                   .stack()
                   .sort_values(ascending=False))
-index, value = sol.items()
-allergen1 = index[0]
-allergen2 = index[1]
+for index, value in sol.items():
+  allergen1 = index[0]
+  allergen2 = index[1]
+  break
 
 #######################################################
 col1, col2 = st.columns([1,2])
