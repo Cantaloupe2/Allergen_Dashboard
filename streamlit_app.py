@@ -114,6 +114,10 @@ fig2.update_layout(
     legend_title="Allergy Type",
 )
 
+dates_ndf = ndf
+dates_ndf["dates"] = df["dates"]
+by_year = dates_ndf.group_by("dates").sum
+st.write(by_year)
 
 tab1, tab2, tab3 = st.tabs(["Total","By Dietary Condition", "By Dietary Condition (Proportions)"])
 
