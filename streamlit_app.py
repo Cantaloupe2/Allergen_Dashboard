@@ -137,6 +137,7 @@ for i in range(len(years)):
 #   dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[-1])*100
 dates_ndf["years"]= years
 by_year = dates_ndf["years"].value_counts()
+by_year = by_year.sort_index()
 st.write(by_year)
 
 
