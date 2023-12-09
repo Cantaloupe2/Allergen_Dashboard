@@ -122,7 +122,10 @@ dates_ndf["dates"] = df["dates"]
 dates_series = dates_ndf['dates']
 
 # remove NaN values from dates
-dates_series = [date for date in dates_series if type(date) == str]
+for i in range(len(dates_series)):
+  if type(dates_series[i]) != str:
+    dates_series[i] = "00"
+#dates_series = [date for date in dates_series if type(date) == str]
 
 # # take the last 2 digits of each element in dates and name it years
 years = [date[-2:] for date in dates_series]
