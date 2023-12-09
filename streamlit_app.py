@@ -113,4 +113,11 @@ fig2.update_layout(
     yaxis_title="Proportion of Allergy",
     legend_title="Allergy Type",
 )
+
+
 st.plotly_chart(fig2)
+tab1, tab2 = st.tabs(["Total","By Dietary Condition", "By Dietary Condition (Proportions)"])
+
+tab1.st.plotly_chart(fig2)
+
+tab2.st.plotly_chart(fig2)
