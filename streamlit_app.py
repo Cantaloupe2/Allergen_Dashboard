@@ -133,8 +133,8 @@ years = [date[-2:] for date in dates_series]
 # st.write(dates_ndf)
 # for i in range(len(dates_ndf)):
 #   dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[-1])*100
-dates_ndf["years"]=years
-by_year = dates_ndf["years].value_counts()
+dates_ndf["years"]= years
+by_year = dates_ndf["years"].value_counts()
 st.write(dates_ndf)
 
 
