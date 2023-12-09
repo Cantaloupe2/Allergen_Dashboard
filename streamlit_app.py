@@ -103,5 +103,14 @@ with col2:
   st.plotly_chart(fig)
 
 
-st.write("More Stuff")
-st.write("dkslafjka;lsd")
+stacked_df = pd.read_csv("linechart_data.csv")
+#fig = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
+stacked_df["Year"] = pd.to_numeric(stacked_df["Year"], errors='coerce')
+stacked_df["Prop"] = pd.to_numeric(stacked_df["Prop"], errors='coerce')
+fig2 = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
+fig2.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Proportion of Allergy",
+    legend_title="Allergy Type",
+)
+st.plotly_chart(fig2)
