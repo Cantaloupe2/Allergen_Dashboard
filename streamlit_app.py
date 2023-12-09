@@ -140,9 +140,18 @@ by_year = dates_ndf["years"].value_counts()
 st.write(by_year)
 
 
+# Total Plot
+fig3 = px.line(x = by_year.index, y = by_year)
+fig3.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Proportion of Allergy",
+    legend_title="Allergy Type",
+)
+
+
 tab1, tab2, tab3 = st.tabs(["Total","By Dietary Condition", "By Dietary Condition (Proportions)"])
 
-tab1.plotly_chart(fig2)
+tab1.plotly_chart(fig3)
 
 tab2.plotly_chart(fig2)
 
