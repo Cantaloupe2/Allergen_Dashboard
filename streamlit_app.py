@@ -117,11 +117,23 @@ fig2.update_layout(
 
 dates_ndf = ndf
 dates_ndf["dates"] = df["dates"]
-st.write(dates_ndf)
-for i in range(len(dates_ndf)):
-  dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[-1])*100
+
+# create a list of the "Date \nContacted" column in diet_data and name it dates
+dates_series = dates_ndf['dates']
+
+# remove NaN values from dates
+dates_series = [date for date in dates_series if type(date) == str]
+
+# # take the last 2 digits of each element in dates and name it years
+years = [date[-2:] for date in dates]
+
+
+# st.write(dates_ndf)
+# for i in range(len(dates_ndf)):
+#   dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[-1])*100
+dates_ndf["years"]=years
 dates_ndf["ones"] = 1
-by_year = dates_ndf.groupby("dates").sum()
+by_year = dates_ndf.groupby("years").sum()
 st.write(dates_ndf)
 
 
