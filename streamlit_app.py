@@ -120,7 +120,7 @@ dates_ndf["dates"] = df["dates"]
 
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates_series = dates_ndf['dates']
-
+st.write(dates_series)
 # remove NaN values from dates
 for i in range(len(dates_series)):
   st.write(i)
