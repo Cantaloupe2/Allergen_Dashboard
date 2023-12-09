@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import mpld3
 import streamlit.components.v1 as components
 import plotly.express as px
-import datetime
+from datetime import datetime
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title("Allergen Data Dashboard")
