@@ -139,7 +139,7 @@ dates_ndf["years"]= years
 by_year = dates_ndf["years"].value_counts()
 by_year = by_year.sort_index()
 by_year = by_year[by_year.index >=2014]
-st.write(by_year)
+
 
 
 # Total Plot
@@ -150,6 +150,7 @@ fig3.update_layout(
     legend_title="Allergy Type",
 )
 
+st.subheader("Responses Time Data")
 
 tab1, tab2, tab3 = st.tabs(["Total","By Dietary Condition", "By Dietary Condition (Proportions)"])
 
