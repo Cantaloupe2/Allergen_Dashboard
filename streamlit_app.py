@@ -135,7 +135,7 @@ years = [date[-2:] for date in dates_series]
 #   dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[-1])*100
 dates_ndf["years"]=years
 dates_ndf["ones"] = 1
-by_year = dates_ndf.groupby("years").sum()
+by_year = dates_ndf.groupby("years")["ones"].sum()
 st.write(dates_ndf)
 
 
