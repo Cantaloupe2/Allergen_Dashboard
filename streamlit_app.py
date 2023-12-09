@@ -117,8 +117,8 @@ fig2.update_layout(
 
 tab1, tab2, tab3 = st.tabs(["Total","By Dietary Condition", "By Dietary Condition (Proportions)"])
 
-tab1.st.plotly_chart(fig2)
+tab1.plotly_chart(fig2)
 
-tab2.st.plotly_chart(fig2)
+tab2.plotly_chart(fig2)
 
-tab3.st.pltly_chart(fig2)
+tab3.plotly_chart(fig2)
