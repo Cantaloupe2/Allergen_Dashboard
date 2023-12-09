@@ -138,6 +138,7 @@ for i in range(len(years)):
 dates_ndf["years"]= years
 by_year = dates_ndf["years"].value_counts()
 by_year = by_year.sort_index()
+by_year = by_year[by_year.index >=1800]
 st.write(by_year)
 
 
