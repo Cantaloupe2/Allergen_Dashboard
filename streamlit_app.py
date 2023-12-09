@@ -101,4 +101,7 @@ with col1:
 with col2:
   st.subheader(f"Allergy Correlation Matrix")
   st.plotly_chart(fig)
+
+
 st.write("More Stuff")
+st.write("dkslafjka;lsd")
