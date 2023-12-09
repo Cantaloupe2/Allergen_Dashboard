@@ -118,7 +118,7 @@ fig2.update_layout(
 dates_ndf = ndf
 dates_ndf["dates"] = df["dates"]
 for i in range(len(dates_ndf)):
-  dates_ndf.loc[i,"dates"] = int(dates_ndf.loc[i,"dates"][6])*100
+  dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[0])*100
 dates_ndf["ones"] = 1
 by_year = dates_ndf.groupby("dates").sum()
 st.write(dates_ndf)
