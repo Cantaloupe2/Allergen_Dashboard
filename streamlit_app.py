@@ -117,6 +117,7 @@ fig2.update_layout(
 
 dates_ndf = ndf
 dates_ndf["dates"] = df["dates"]
+st.write(dates_ndf)
 for i in range(len(dates_ndf)):
   dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[6:7])*100
 dates_ndf["ones"] = 1
