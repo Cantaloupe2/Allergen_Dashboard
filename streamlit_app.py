@@ -116,8 +116,9 @@ fig2.update_layout(
 
 dates_ndf = ndf
 dates_ndf["dates"] = df["dates"]
+dates_ndf["ones"] = 1
 by_year = dates_ndf.groupby("dates").sum()
-st.write(by_year)
+st.write(dates_ndf)
 
 
 tab1, tab2, tab3 = st.tabs(["Total","By Dietary Condition", "By Dietary Condition (Proportions)"])
