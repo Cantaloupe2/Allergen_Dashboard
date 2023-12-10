@@ -111,7 +111,7 @@ stacked_df["Prop"] = pd.to_numeric(stacked_df["Prop"], errors='coerce')
 fig2 = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
 fig2.update_layout(
     xaxis_title="Year",
-    yaxis_title="Proportion of Allergy",
+    yaxis_title="Proportion",
     legend_title="Allergy Type",
 )
 
@@ -146,8 +146,7 @@ by_year = by_year[by_year.index >=2014]
 fig3 = px.line(x = by_year.index, y = by_year)
 fig3.update_layout(
     xaxis_title="Year",
-    yaxis_title="Proportion of Allergy",
-    legend_title="Allergy Type",
+    yaxis_title="Responses",
 )
 
 st.subheader("Responses Time Data")
