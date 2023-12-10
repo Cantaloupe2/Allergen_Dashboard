@@ -155,7 +155,7 @@ fig3.update_layout(
 #   total_concerns.append(stacked_df.iloc[i,"Prop"]*by_year[stacked_df.iloc[i,"Year"]])
 
 # non proportional dietary condition plot
-fig4 = px.line(x = stacked_df["Year"], y = stacked_df["Count", color = stacked_df["allergy"])
+fig4 = px.line(x = stacked_df["Year"], y = stacked_df["Count"], color = stacked_df["allergy"])
 fig4.update_layout(
     xaxis_title="Year",
     yaxis_title="Responses",
