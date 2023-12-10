@@ -112,7 +112,7 @@ fig2 = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_d
 fig2.update_layout(
     xaxis_title="Year",
     yaxis_title="Proportion",
-    legend_title="Allergy Type",
+    legend_title="Dietary Concern",
 )
 
 dates_ndf = ndf
@@ -151,7 +151,7 @@ fig3.update_layout(
 
 st.subheader("Responses Time Data")
 
-tab1, tab2, tab3 = st.tabs(["Total","By Dietary Condition", "By Dietary Condition (Proportions)"])
+tab1, tab2, tab3 = st.tabs(["Total","By Dietary Concern", "By Dietary Concern (Proportions)"])
 
 tab1.plotly_chart(fig3)
 
