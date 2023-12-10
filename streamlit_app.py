@@ -150,7 +150,12 @@ fig3.update_layout(
 )
 
 # non proportional dietary condition plot
-fig4 = px.line(x = by_year.index, y = by_year*stacked_df["Prop"]
+fig4 = px.line(x = by_year.index, y = by_year*stacked_df["Prop"], color = stacked_df["allergy"])
+fig4.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Responses",
+    legend_title="Dietary Concern",
+)
 
 st.subheader("Responses Time Data")
 
@@ -158,6 +163,6 @@ tab1, tab2, tab3 = st.tabs(["Total","By Dietary Concern", "By Dietary Concern (P
 
 tab1.plotly_chart(fig3)
 
-tab2.plotly_chart(fig2)
+tab2.plotly_chart(fig4)
 
 tab3.plotly_chart(fig2)
