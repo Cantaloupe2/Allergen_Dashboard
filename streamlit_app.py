@@ -13,7 +13,7 @@ from datetime import datetime
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title("Allergen Data Dashboard")
 
-add_sidebar = st.sidebar.selectbox("Page",("1","2"))
+# add_sidebar = st.sidebar.selectbox("Page",("1","2"))
 
 print('streamlit file')
 diet_data = pd.read_csv('diet_data_no_names.csv')
