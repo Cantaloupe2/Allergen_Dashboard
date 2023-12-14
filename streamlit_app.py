@@ -184,7 +184,6 @@ neighorhoods['Year'] = '20' + neighorhoods['Date \nContacted'].str.split('/').st
 neighborhood_list = np.array(["south","north","east","brody","rivertrail"])
 grouped_years = neighorhoods.groupby("Year")
 data_2014 = grouped_years.get_group("2014")
-data_2014
 
 fig5 = px.bar(x = neighborhood_list,y = neighorhoods["Neighborhood"].value_counts())
 fig5.update_layout(
