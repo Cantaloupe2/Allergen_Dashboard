@@ -191,4 +191,4 @@ fig5.update_layout(
     xaxis_title="Neighborhood",
     yaxis_title="Count",
 )
-st.write(fig5
+st.write(fig5)
