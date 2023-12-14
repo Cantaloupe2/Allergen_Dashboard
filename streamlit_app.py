@@ -171,3 +171,24 @@ tab1.plotly_chart(fig3)
 tab2.plotly_chart(fig4)
 
 tab3.plotly_chart(fig2)
+
+
+
+###########################################################
+neighorhoods = pd.read_csv("neighborhood_data.csv")
+
+
+neighorhoods['Year'] = '20' + neighorhoods['Date \nContacted'].str.split('/').str[-1]
+
+
+neighborhood_list = np.array(["south","north","east","brody","rivertrail"])
+grouped_years = neighorhoods.groupby("Year")
+data_2014 = grouped_years.get_group("2014")
+data_2014
+
+fig5 = px.bar(x = neighborhood_list,y = neighorhoods["Neighborhood"].value_counts())
+fig5.update_layout(
+    xaxis_title="Neighborhood",
+    yaxis_title="Count",
+)
+st.write(fig5
