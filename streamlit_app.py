@@ -190,4 +190,5 @@ fig5.update_layout(
     xaxis_title="Neighborhood",
     yaxis_title="Count",
 )
+st.subheader("Response Locations")
 st.write(fig5)
