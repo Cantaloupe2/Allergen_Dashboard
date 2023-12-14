@@ -11,7 +11,7 @@ import plotly.express as px
 from datetime import datetime
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
-st.title("Allergen Data Dashboard")
+st.title("Dietary Concerns Dashboard")
 
 # add_sidebar = st.sidebar.selectbox("Page",("1","2"))
 
@@ -100,7 +100,7 @@ with col1:
   st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
   st.write(f"Students list an average of **{str(average_allergens)[0:3]}** allergies.")
 with col2:
-  st.subheader(f"Allergy Correlation Matrix")
+  st.subheader(f"Dietary Concerns Correlation Matrix")
   st.plotly_chart(fig)
 
 
