@@ -33,14 +33,14 @@ def format_date(date_str):
     try:
         # Attempt to parse the date
         parsed_date = datetime.strptime(date_str, '%m/%d/%y')
-        st.write(parsed_date.strftime('%m/%d/%yy'))
-        return parsed_date.strftime('%m/%d/%yy')
+        st.write(parsed_date.strftime('%m/%d/%y'))
+        return parsed_date.strftime('%m/%d/%y')
     except ValueError:
         # If parsing fails, try another format
         try:
             parsed_date = datetime.strptime(date_str, '%m/%d/%Y %H:%M:%S')
-            parsed_date.strftime('%m/%d/%yy')
-            return parsed_date.strftime('%m/%d/%yy')
+            parsed_date.strftime('%m/%d/%y')
+            return parsed_date.strftime('%m/%d/%y')
         except ValueError:
             # Handle the case where the date is not in the expected formats
             st.write(date_str)
