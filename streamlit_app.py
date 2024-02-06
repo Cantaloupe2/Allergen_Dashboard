@@ -33,12 +33,12 @@ def format_date(date_str):
     try:
         # Attempt to parse the date
         parsed_date = datetime.strptime(date_str, '%m/%d/%y')
-        return parsed_date.strftime('%m/%d/%y')
+        return parsed_date.strftime('%m/%d/%yy')
     except ValueError:
         # If parsing fails, try another format
         try:
             parsed_date = datetime.strptime(date_str, '%m/%d/%Y %H:%M:%S')
-            return parsed_date.strftime('%m/%d/%y')
+            return parsed_date.strftime('%m/%d/%yy')
         except ValueError:
             # Handle the case where the date is not in the expected formats
             return None
@@ -166,7 +166,7 @@ for i in range(len(dates_series)):
 #dates_series = [date for date in dates_series if type(date) == str]
 
 # # take the last 2 digits of each element in dates and name it years
-years = [date[-2:] for date in dates_series]
+years = [int(date[-2:]) for date in dates_series]
 # convert to years
 for i in range(len(years)):
   years[i] = int(years[i])+2000
