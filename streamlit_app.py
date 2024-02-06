@@ -26,7 +26,7 @@ diet_data['dates'] =dates
   #################################################
 
 df = diet_data
-st.write(diet_data["dates])
+st.write(diet_data["dates"])
 #######################################################
 # Convert Date times to correct format if not already
 def format_date(date_str):
