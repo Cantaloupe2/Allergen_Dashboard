@@ -170,6 +170,7 @@ for i in range(len(dates_series)):
 
 # # take the last 2 digits of each element in dates and name it years
 years = [date[-2:] for date in dates_series]
+st.write(years)
 # convert to years
 for i in range(len(years)):
   years[i] = int(years[i])+2000
