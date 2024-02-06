@@ -159,10 +159,10 @@ fig2.update_layout(
 
 dates_ndf = ndf
 dates_ndf["dates"] = df["dates"]
-
+# st.write(df["dates"])
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates_series = dates_ndf['dates']
-st.write(dates_series)
+# st.write(dates_series)
 # remove NaN values from dates
 for i in range(len(dates_series)):
   if type(dates_series.iloc[i]) != str:
