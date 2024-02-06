@@ -41,7 +41,7 @@ def format_date(date_str):
             return parsed_date.strftime('%m/%d/%yy')
         except ValueError:
             # Handle the case where the date is not in the expected formats
-            return None
+            return date_str
 
 # Apply the formatting function to the 'date' column
 df['dates'] = df['dates'].apply(format_date)
@@ -169,7 +169,6 @@ for i in range(len(dates_series)):
 years = [date[-2:] for date in dates_series]
 # convert to years
 for i in range(len(years)):
-  st.write(years[i])
   years[i] = int(years[i])+2000
 
 # st.write(dates_ndf)
