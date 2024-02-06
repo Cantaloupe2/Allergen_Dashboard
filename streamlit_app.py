@@ -44,7 +44,7 @@ def format_date(date_str):
             return parsed_date.strftime('%m/%d/%y')
         except ValueError:
             # Handle the case where the date is not in the expected formats
-            st.write("hi")
+            st.write(date_str)
             return date_str
 
 # Apply the formatting function to the 'date' column
