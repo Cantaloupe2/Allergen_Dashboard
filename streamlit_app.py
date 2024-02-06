@@ -53,9 +53,11 @@ columns_to_check = df.columns
 for index, row in df.iterrows():
     for column in columns_to_check:
         # Check if the column name is in the string for the current row (case-sensitive)
-        if column in row[column]:
+        if column in str(row[column]):
             # If present, mark the column with 'x'
             df.at[index, column] = 'x'
+        if str(row[column]) == 'x':
+            dummy = 0
         else:
             # If not present, mark the column with ''
             df.at[index, column] = ''
