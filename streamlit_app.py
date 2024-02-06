@@ -26,7 +26,7 @@ diet_data['dates'] =dates
   #################################################
 
 df = diet_data
-st.write(diet_data["dates"])
+# st.write(diet_data["dates"])
 #######################################################
 # Convert Date times to correct format if not already
 def format_date(date_str):
@@ -44,7 +44,7 @@ def format_date(date_str):
             return parsed_date.strftime('%m/%d/%y')
         except ValueError:
             # Handle the case where the date is not in the expected formats
-            # st.write(date_str)
+            st.write("hi")
             return date_str
 
 # Apply the formatting function to the 'date' column
