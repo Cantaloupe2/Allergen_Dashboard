@@ -43,7 +43,7 @@ def format_date(date_str):
             return None
 
 # Apply the formatting function to the 'date' column
-df['date'] = df['date'].apply(format_date)
+df['dates'] = df['dates'].apply(format_date)
 ###########################################################
 
 columns_to_check = df.columns
