@@ -169,6 +169,7 @@ for i in range(len(dates_series)):
 years = [date[-2:] for date in dates_series]
 # convert to years
 for i in range(len(years)):
+  print(years[i])
   years[i] = int(years[i])+2000
 
 # st.write(dates_ndf)
