@@ -29,6 +29,7 @@ df = diet_data
 #######################################################
 # Convert Date times to correct format if not already
 def format_date(date_str):
+    date_str = str(date_str)
     try:
         # Attempt to parse the date
         parsed_date = datetime.strptime(date_str, '%m/%d/%y')
