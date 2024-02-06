@@ -26,6 +26,7 @@ diet_data['dates'] =dates
   #################################################
 
 df = diet_data
+st.write(diet_data["dates])
 #######################################################
 # Convert Date times to correct format if not already
 def format_date(date_str):
@@ -159,7 +160,7 @@ fig2.update_layout(
 
 dates_ndf = ndf
 dates_ndf["dates"] = df["dates"]
-st.write(df["dates"])
+# st.write(df["dates"])
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates_series = dates_ndf['dates']
 # st.write(dates_series)
