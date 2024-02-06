@@ -26,6 +26,41 @@ diet_data['dates'] =dates
   #################################################
 
 df = diet_data
+#######################################################
+# Convert Date times to correct format if not already
+def format_date(date_str):
+    try:
+        # Attempt to parse the date
+        parsed_date = datetime.strptime(date_str, '%m/%d/%y')
+        return parsed_date.strftime('%m/%d/%y')
+    except ValueError:
+        # If parsing fails, try another format
+        try:
+            parsed_date = datetime.strptime(date_str, '%m/%d/%Y %H:%M:%S')
+            return parsed_date.strftime('%m/%d/%y')
+        except ValueError:
+            # Handle the case where the date is not in the expected formats
+            return None
+
+# Apply the formatting function to the 'date' column
+df['date'] = df['date'].apply(format_date)
+###########################################################
+
+columns_to_check = df.columns
+
+# Iterate over each row and column
+for index, row in df.iterrows():
+    for column in columns_to_check:
+        # Check if the column name is in the string for the current row (case-sensitive)
+        if column in row[column]:
+            # If present, mark the column with 'x'
+            df.at[index, column] = 'x'
+        else:
+            # If not present, mark the column with ''
+            df.at[index, column] = ''
+
+#############################################################
+
 sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','dates', 'Date \nContacted'], axis=1)
