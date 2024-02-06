@@ -45,7 +45,7 @@ def format_date(date_str):
 # Apply the formatting function to the 'date' column
 df['dates'] = df['dates'].apply(format_date)
 ###########################################################
-
+# convert mess of strings to X marks
 columns_to_check = df.columns
 
 # Iterate over each row and column
