@@ -162,6 +162,7 @@ dates_ndf["dates"] = df["dates"]
 
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates_series = dates_ndf['dates']
+st.write(dates_series)
 # remove NaN values from dates
 for i in range(len(dates_series)):
   if type(dates_series.iloc[i]) != str:
@@ -170,7 +171,7 @@ for i in range(len(dates_series)):
 
 # # take the last 2 digits of each element in dates and name it years
 years = [date[-2:] for date in dates_series]
-st.write(years)
+# st.write(years)
 # convert to years
 for i in range(len(years)):
   years[i] = int(years[i])+2000
