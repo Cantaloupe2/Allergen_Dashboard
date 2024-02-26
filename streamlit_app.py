@@ -48,9 +48,10 @@ def format_date(date_str):
 
 # Apply the formatting function to the 'date' column
 df['dates'] = df['dates'].apply(format_date)
-st.write(df["dates"])
+
 # remove nan values
 df = df[df['dates'].notna()]
+st.write(df["dates"])
 ###########################################################
 # convert mess of strings to X marks
 columns_to_check = df.columns
