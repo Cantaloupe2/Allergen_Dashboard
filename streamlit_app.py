@@ -170,10 +170,10 @@ dates_series = dates_ndf['dates']
 #  if type(dates_series.iloc[i]) != str:
     #dates_series.iloc[i] = "00"
 #dates_series = [date for date in dates_series if type(date) == str]
-
+st.write(df["dates"])
 # # take the last 2 digits of each element in dates and name it years
 years = [date[-2:] for date in df['dates']]
-st.write(years)
+#st.write(years)
 # convert to years
 for i in range(len(years)):
     years[i] = int(years[i])+2000
