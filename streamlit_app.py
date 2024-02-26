@@ -176,7 +176,7 @@ years = [date[-2:] for date in df['dates']]
 # st.write(years)
 # convert to years
 for i in range(len(years)):
-  years[i] = int(years[i])+2000
+    years[i] = int(years[i])+2000
 
 # st.write(dates_ndf)
 # for i in range(len(dates_ndf)):
