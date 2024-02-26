@@ -51,7 +51,7 @@ df['dates'] = df['dates'].apply(format_date)
 
 # remove nan values
 df = df[df['dates'].notna()]
-st.write(df["dates"])
+
 ###########################################################
 # convert mess of strings to X marks
 columns_to_check = df.columns
@@ -71,6 +71,7 @@ for index, row in df.iterrows():
 
 #############################################################
 df = df[df['dates'].notna()]
+st.write(df["dates"])
 sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','dates', 'Date \nContacted'], axis=1)
