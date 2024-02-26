@@ -55,7 +55,7 @@ df = df[df['dates'].notna()]
 ###########################################################
 # convert mess of strings to X marks
 columns_to_check = df.columns
-
+st.write(df["dates"])
 # Iterate over each row and column
 for index, row in df.iterrows():
     for column in columns_to_check:
@@ -68,7 +68,7 @@ for index, row in df.iterrows():
         else:
             # If not present, mark the column with ''
             df.at[index, column] = ''
-
+st.write(df["dates"])
 #############################################################
 df = df[df['dates'].notna()]
 st.write(df["dates"])
