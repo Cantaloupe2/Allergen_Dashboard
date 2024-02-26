@@ -70,7 +70,7 @@ for index, row in df.iterrows():
             df.at[index, column] = ''
 
 #############################################################
-df.dropna(subset=['dates'], inplace=True)
+df = df[df['dates'].notna()]
 sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','dates', 'Date \nContacted'], axis=1)
