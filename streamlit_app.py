@@ -54,7 +54,9 @@ df = df[df['dates'].notna()]
 
 ###########################################################
 # convert mess of strings to X marks
-columns_to_check = df.columns
+columns_to_check = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
+                      'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
+                      'Vegetarian','Halal','Kosher']
 st.write(df["dates"])
 # Iterate over each row and column
 for index, row in df.iterrows():
