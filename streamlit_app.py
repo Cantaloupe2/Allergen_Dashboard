@@ -166,9 +166,9 @@ dates_ndf["dates"] = df["dates"]
 dates_series = dates_ndf['dates']
 # st.write(dates_series)
 # remove NaN values from dates
-for i in range(len(dates_series)):
-  if type(dates_series.iloc[i]) != str:
-    dates_series.iloc[i] = "00"
+#for i in range(len(dates_series)):            recently removed this for loop
+#  if type(dates_series.iloc[i]) != str:
+    #dates_series.iloc[i] = "00"
 #dates_series = [date for date in dates_series if type(date) == str]
 
 # # take the last 2 digits of each element in dates and name it years
