@@ -48,6 +48,7 @@ def format_date(date_str):
 
 # Apply the formatting function to the 'date' column
 df['dates'] = df['dates'].apply(format_date)
+st.write(df["dates"])
 # remove nan values
 df = df[df['dates'].notna()]
 ###########################################################
@@ -170,7 +171,7 @@ dates_series = dates_ndf['dates']
 #  if type(dates_series.iloc[i]) != str:
     #dates_series.iloc[i] = "00"
 #dates_series = [date for date in dates_series if type(date) == str]
-st.write(df["dates"])
+# st.write(df["dates"])
 # # take the last 2 digits of each element in dates and name it years
 years = [date[-2:] for date in df['dates']]
 #st.write(years)
