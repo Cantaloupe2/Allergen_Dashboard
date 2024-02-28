@@ -65,7 +65,8 @@ for index, row in df.iterrows():
             # If present, mark the column with 'x'
             df.at[index, column] = 'x'
             st.write(df)
-        if str(row[column]) == 'x':
+            pass
+        if str(df.at[index,column]) == 'x':
             pass
         else:
             # If not present, mark the column with ''
