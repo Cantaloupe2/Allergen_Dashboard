@@ -240,3 +240,8 @@ fig5.update_layout(
 )
 st.subheader("Response Locations")
 st.write(fig5)
+
+
+############################################################## Final Debugging
+st.write(df)
+
