@@ -62,6 +62,7 @@ for index, row in df.iterrows():
     for column in columns_to_check:
         # Check if the column name is in the string for the current row (case-sensitive)
         if str(column) in str(row[column]):
+            st.write(row)
             # If present, mark the column with 'x'
             df.at[index, column] = 'x'
             st.write(index)
