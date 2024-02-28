@@ -54,18 +54,18 @@ df = df[df['dates'].notna()]
 
 ###########################################################
 # convert mess of strings to X marks
-columns_to_check = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
+columns_to_check = ['Egg', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                       'Vegetarian','Halal','Kosher']
 # Iterate over each row and column
 for index, row in df.iterrows():
     for column in columns_to_check:
         # Check if the column name is in the string for the current row (case-sensitive)
-        if column in str(row[column]):
+        if str(column) in str(row[column]):
             # If present, mark the column with 'x'
             df.at[index, column] = 'x'
         if str(row[column]) == 'x':
-            dummy = 0
+            pass
         else:
             # If not present, mark the column with ''
             df.at[index, column] = ''
