@@ -9,14 +9,15 @@ import mpld3
 import streamlit.components.v1 as components
 import plotly.express as px
 from datetime import datetime
-
+alt_df_address = "allergen_data_pipeline_4-diet_data_no_names.csv"
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.title("Dietary Concerns Dashboard")
 
 # add_sidebar = st.sidebar.selectbox("Page",("1","2"))
 
 print('streamlit file')
-diet_data = pd.read_csv('diet_data_no_names.csv')
+diet_data = pd.read_csv(alt_df_address)
+# diet_data = pd.read_csv('diet_data_no_names.csv')
 
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates = diet_data['Date \nContacted']
