@@ -39,7 +39,7 @@ def format_date(date_str):
     except ValueError:
         # If parsing fails, try another format
         try:
-            parsed_date = datetime.strptime(str(date_str), '%m-%d-%Y %H:%M:%S')
+            parsed_date = datetime.strptime(str(date_str), "%Y-%m-%d %H:%M:%S")
             st.write(parsed_date)
             # parsed_date.strftime('%m/%d/%y')
             return parsed_date.strftime('%m/%d/%y')
