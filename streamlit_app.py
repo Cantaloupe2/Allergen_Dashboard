@@ -87,7 +87,7 @@ columns_to_check = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
 for index, row in df.iterrows():
     for column in columns_to_check:
         # Check if the column name is in the string for the current row (case-sensitive)
-        if str(column)[0:4] in str(row[column]):
+        if str(column)[0:3] in str(row[column]):
             # If present, mark the column with 'x'
             df.at[index, column] = 'x'
             pass
