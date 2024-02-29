@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sonic-harbor-404423",
+  "private_key_id": "c09f9b7f4fe5d738d42d34a4b40e7af676f7cb7c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDnkJ5YYPqqvsr2\nuGCRnXyqYvzyKjBGFnlCoc7D9IePK7hNcbiOqEJQo4/MDrbQ5bfuCK86N2de7TZs\nG/LHH2prNpTMt7IEqqj6U1wBKSMJek19J3UTRRJ1hwN1OpvgKarUJAFXQkUERLx/\nZ6zdxLYFEHs0aWBY4QsEVSVeYQu5tszxOacj7Few3aiAJkveJO1bTkxSUMsKU+0E\nPQOM8R3rPb/r0H8t8WwpYPsb9bh0qwIO/dtb6t8hbYgYVlKSXaflgtbKbKpSsk1y\nMZMdkquxKbl5ut8vA/8ljyaDBZouCZq6b7DM2+kas6fAHGmP07ieHimwAcBSDgwJ\nqHlFLKYtAgMBAAECggEAEfxRVC96ILtvc8DH3V+EUI6eM2fz9mml8vcy4lTyl3vv\nlXJNAaWPewhtMY3+BJUnF1Gs3IJzoLOfe7+i+HTX9OpZHdpxtPuVYtYJKhzqGAEc\nFimzpfLCN4csTVVnSH6sAkymnwKqbiWxl1qz2ki+U3/fdeduYJDgJG7Bl4ZFnR+w\nDTEBW870wIPACWiMZ0Nv7PWrQirYmLsTx63j1z4SDvgLzT21qW9ZwUQ/kTezoEPu\n15TpRn5zW0eV3xR1IH/bmCoX92EjGjtDoM5Wh1kqdh8XrL8fBfa7OYH++DJozZgV\nO9mhDAS3w5DXmzecwJ8X2Sbqo3jMifn5mqDc38bJiQKBgQD7lVGRZdWZ0f6Js0Wf\numW9fS3HWBup9eJEkB1tv0ddrkRSHgG1Q21Sf59kkWU4Ri9kg7+mhnRWzPxBklns\nbBfQ2TfLnDMc7mhDR5aZaUHpaFMAqYlMaEUlI80MiSHsZbNLgHWWmoBVpJ5wT1NK\n21EfXp3x3DMRBX9yvA7xXxauRQKBgQDroVUHJ5LSd3uz28W84kMEv05DBwBsGXOu\nhqwzg1xceA/74+KvJ0F9wFZV7heBZx8cKps3aoSPG5PUyrGXbOvs5hykfDXU44XO\nd01++CmXQfVl2gxxsT7PiLgIFmlBRuQEOA9oAQH6kjqGVWDApZs0o4GWJLsOw9Y/\npuuexlSqyQKBgQCHi0pYCMKNTjtSGxke1oEsFz5L0WeOKWCPyglg8JZVnadHis0m\nyL4knYfV2hPrvryX7feak4Qoo+YgueXi39Xw+qb59xz+sF/SJ8a2vqP5SfC2QaEs\nXl0qhmBaKaPyRlTUD9DKpFESU0/deI+KnCDXwtVb0mRc/lZNDY8Lcky49QKBgQDq\nBefvHSzDgAwKTGKOAKLTWjWeeJvAwV6Vngf1eagH5u7pHCKOF40CGj8lRT1vNj49\nuUtDtLVHdPpUQ6QyYunG9ZzI+Nx2PistLmx3iH22TrotmGz3ljRt5rnwvmF3hbL9\nRbh3cVjHxuf9d1qKu2/0zdfsiTqHpZVqzpwBq7V3kQKBgCzw+9usYLFWYhhTgyLt\nb+Z8ZJaKGH9nlu8Zoo+Py8XrkXpMCHvCP/3yfe6iqIsz8elsM5sXEj60MqI85Bv1\nbaeNzLDL67GFp/oZH0GHmRYlqBfkLeomYPD+WcCNwTyyOVnHUiiwWIiuCF38fuIw\nx/E9lyQDlJVIkOpDllQoCCZD\n-----END PRIVATE KEY-----\n",
+  "client_email": "msu-culinary-pipeline@sonic-harbor-404423.iam.gserviceaccount.com",
+  "client_id": "107098988881082119481",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/msu-culinary-pipeline%40sonic-harbor-404423.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
