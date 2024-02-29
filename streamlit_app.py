@@ -66,7 +66,6 @@ def format_date(date_str):
         # If parsing fails, try another format
         try:
             parsed_date = datetime.strptime(str(date_str), "%Y-%m-%d %H:%M:%S")
-            st.write(parsed_date)
             # parsed_date.strftime('%m/%d/%y')
             return parsed_date.strftime('%m/%d/%y')
         except ValueError:
@@ -88,7 +87,7 @@ columns_to_check = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
 for index, row in df.iterrows():
     for column in columns_to_check:
         # Check if the column name is in the string for the current row (case-sensitive)
-        if str(column) in str(row[column]):
+        if str(column)[0:4] in str(row[column]):
             # If present, mark the column with 'x'
             df.at[index, column] = 'x'
             pass
