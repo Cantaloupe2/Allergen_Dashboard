@@ -9,15 +9,41 @@ import mpld3
 import streamlit.components.v1 as components
 import plotly.express as px
 from datetime import datetime
-alt_df_address = "allergen_data_pipeline_4-diet_data_no_names.csv"
-st.set_option('deprecation.showPyplotGlobalUse', False)
-st.title("Dietary Concerns Dashboard")
+###################################################################################
+import gspread
+from gspread_dataframe import get_as_dataframe, set_with_dataframe
 
-# add_sidebar = st.sidebar.selectbox("Page",("1","2"))
+# Set up credentials
+api_key = "AIzaSyD95Gh8QGvJVrW1GnU39NWLd2PS77xr5qE"  # Replace with your API key
 
-print('streamlit file')
-diet_data = pd.read_csv(alt_df_address)
-# diet_data = pd.read_csv('diet_data_no_names.csv')
+# Authenticate using API key
+service_account_file = "sonic-harbor-404423-c09f9b7f4fe5.json"
+gc = gspread.service_account(filename=service_account_file)
+
+# Open the Google Sheet by URL
+spreadsheet_url = "https://docs.google.com/spreadsheets/d/1GG1BuGn-u85zIaxM1Mo9ymgotqgY4k44fn3kKV-wbLY/edit?usp=sharing"  # Replace with your Google Sheets URL
+sh = gc.open_by_url(spreadsheet_url)
+
+# Select a specific worksheet
+worksheet = sh.get_worksheet(0)  # Change the index accordingly
+
+# Get all values from the worksheet as DataFrame
+diet_data = get_as_dataframe(worksheet)
+
+
+
+####################################################################################
+
+
+# alt_df_address = "allergen_data_pipeline_4-diet_data_no_names.csv"
+# st.set_option('deprecation.showPyplotGlobalUse', False)
+# st.title("Dietary Concerns Dashboard")
+
+# # add_sidebar = st.sidebar.selectbox("Page",("1","2"))
+
+# print('streamlit file')
+# diet_data = pd.read_csv(alt_df_address)
+# # diet_data = pd.read_csv('diet_data_no_names.csv')
 
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates = diet_data['Date \nContacted']
