@@ -1,5 +1,7 @@
-gspread==4.0.1
-gspread-dataframe==4.0.1
+# gspread==4.0.1
+# gspread-dataframe==4.0.1
+gspread
+gspread-dataframe
 numpy
 pandas-datareader
 seaborn
