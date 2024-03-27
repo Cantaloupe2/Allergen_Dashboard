@@ -91,10 +91,10 @@ sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Class Type','dates', 'Date \nContacted'], axis=1)
 # Drop columns where no allergen is listed (for correlation matrix)
 cdf=sdf.dropna(how='all')
-
+ndf = cdf.fillna(0)
 # Fix how na values are counted for allergens
-ndf = df.dropna(how='all')
-ndf = ndf.fillna(0)
+mod_ndf = df.dropna(how='all')
+mod_ndf = mod_ndf.fillna(0)
 columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                       'Vegetarian','Halal','Kosher']
@@ -107,20 +107,16 @@ for col in columns_to_convert:
     total_allergens = total_allergens + ndf[col].sum()
 average_allergens = total_allergens/len(ndf)
 
-matrix_ndf = ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
-             'Specialist','Intial Concern','Hall (Living/Eating)',
-             'Class Type','dates', 'Date \nContacted'], axis=1)
-
 for col in columns_to_convert:
-    matrix_ndf[col] = matrix_ndf[col].replace('x', 1)
-    matrix_ndf[col] = matrix_ndf[col].replace(' ',0)
-    matrix_ndf[col] = matrix_ndf[col].replace('',0)
-    total_allergens = total_allergens + matrix_ndf[col].sum()
+    mod_ndf[col] = mod_ndf[col].replace('x', 1)
+    mod_ndf[col] = mod_ndf[col].replace(' ',0)
+    mod_ndf[col] = mod_ndf[col].replace('',0)
+    total_allergens = total_allergens + mod_ndf[col].sum()
 
 st.write(ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','dates', 'Date \nContacted'], axis=1))
-matrix = matrix_ndf.corr()
+matrix = ndf.corr()
 
 #######################################################
 #Code for the info bar
