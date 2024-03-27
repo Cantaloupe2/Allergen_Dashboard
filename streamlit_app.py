@@ -254,7 +254,6 @@ tab3.plotly_chart(fig2)
 dates_ndf = dates_ndf.reset_index()
 hall_column_string = 'Hall (Living/Eating)'
 unique_years = dates_ndf['years'].unique()
-st.write(dates_ndf)
 unique_halls = dates_ndf[hall_column_string].unique()
 valid_halls = ['Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
 filtered_df = pd.DataFrame([], index=unique_years, columns=valid_halls)
@@ -280,7 +279,10 @@ for i, hall in enumerate(valid_halls):
 filtered_df = filtered_df.drop(2002)
 ##############################
 import plotly.graph_objects as go
-hall_select = 'Owen'
+option = st.selectbox(
+    'How would you like to be contacted?',
+    valid_halls)
+hall_select = option
 dict_list = []
 for i, val in enumerate(filtered_df[hall_select]):
     dict_list.append(val[0])
