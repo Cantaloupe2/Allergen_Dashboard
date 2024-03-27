@@ -107,8 +107,6 @@ for col in columns_to_convert:
     ndf[col] = ndf[col].replace('x', 1)
     ndf[col] = ndf[col].replace(' ',0)
     ndf[col] = ndf[col].replace('',0)
-    total_allergens = total_allergens + ndf[col].sum()
-average_allergens = total_allergens/len(ndf)
 
 for col in columns_to_convert:
     mod_ndf[col] = mod_ndf[col].replace('x', 1)
@@ -141,6 +139,10 @@ option = st.selectbox(
     valid_halls)
 hall_column_string = 'Hall (Living/Eating)'
 stats_df = ndf[mod_ndf[hall_column_string] == option]
+for col in columns_to_convert:
+    total_allergens = total_allergens + stats_df[col].sum()
+average_allergens = total_allergens/len(ndf)
+
 
 # find most common value
 allergen_max = stats_df.sum().idxmax()
@@ -332,5 +334,5 @@ st.plotly_chart(fig_subsec)
 ########################################################################################################
 
 ############################################################## Final Debugging
-st.write(df)
+# st.write(df)
 
