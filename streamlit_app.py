@@ -106,6 +106,9 @@ for col in columns_to_convert:
     ndf[col] = ndf[col].replace('',0)
     total_allergens = total_allergens + ndf[col].sum()
 average_allergens = total_allergens/len(ndf)
+st.write(ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
+             'Specialist','Intial Concern','Hall (Living/Eating)',
+             'Class Type','dates', 'Date \nContacted'], axis=1))
 matrix = ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','dates', 'Date \nContacted'], axis=1).corr()
