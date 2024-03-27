@@ -289,9 +289,9 @@ def main_sequence(filtered_df):
 filtered_df = main_sequence(filtered_df)
 ##############################
 import plotly.graph_objects as go
-option = st.selectbox(
-    'Select Hall',
-    valid_halls)
+# option = st.selectbox(
+#     'Select Hall',
+#     valid_halls)
 hall_select = option
 dict_list = []
 for i, val in enumerate(filtered_df[hall_select]):
