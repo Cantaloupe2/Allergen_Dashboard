@@ -140,7 +140,7 @@ option = st.selectbox(
     'Select Hall',
     valid_halls)
 hall_column_string = 'Hall (Living/Eating)'
-stats_df = ndf[ndf[hall_column_string] == option]
+stats_df = mod_ndf[mod_ndf[hall_column_string] == option]
 
 # find most common value
 allergen_max = stats_df.sum().idxmax()
