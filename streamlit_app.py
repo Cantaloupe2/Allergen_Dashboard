@@ -1,3 +1,4 @@
+# Imports
 import pandas as pd
 import streamlit as st
 from string import ascii_letters
@@ -9,10 +10,11 @@ import mpld3
 import streamlit.components.v1 as components
 import plotly.express as px
 from datetime import datetime
-###################################################################################
 import gspread
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
 
+#######################################################################################
+'''Pulling in the data from qualtrix pipeline'''
 # Set up credentials
 api_key = "AIzaSyD95Gh8QGvJVrW1GnU39NWLd2PS77xr5qE"  # Replace with your API key
 
@@ -30,32 +32,15 @@ worksheet = sh.get_worksheet(0)  # Change the index accordingly
 # Get all values from the worksheet as DataFrame
 diet_data = get_as_dataframe(worksheet)
 
-
-
-####################################################################################
-
-
-# alt_df_address = "allergen_data_pipeline_4-diet_data_no_names.csv"
-# st.set_option('deprecation.showPyplotGlobalUse', False)
-# st.title("Dietary Concerns Dashboard")
-
-# # add_sidebar = st.sidebar.selectbox("Page",("1","2"))
-
-# print('streamlit file')
-# diet_data = pd.read_csv(alt_df_address)
-# # diet_data = pd.read_csv('diet_data_no_names.csv')
-
-# create a list of the "Date \nContacted" column in diet_data and name it dates
+# Rename Column in round about way
 dates = diet_data['Date \nContacted']
 diet_data['dates'] =dates
 
-
-  #################################################
-
+# Create A separate Dataframe Named Df
 df = diet_data
-# st.write(diet_data["dates"])
+
 #######################################################
-# Convert Date times to correct format if not already
+'''Convert Date times to correct format if not already''' 
 def format_date(date_str):
     try:
         # Attempt to parse the date
@@ -79,7 +64,7 @@ df['dates'] = df['dates'].apply(format_date)
 df = df[df['dates'].notna()]
 
 ###########################################################
-# convert mess of strings to X marks
+''' convert mess of strings to X marks'''
 columns_to_check = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                       'Vegetarian','Halal','Kosher']
@@ -97,12 +82,17 @@ for index, row in df.iterrows():
             # If not present, mark the column with ''
             df.at[index, column] = ''
 #############################################################
+'''Create several modified dataframes'''
+#drop entries with no date
 df = df[df['dates'].notna()]
+# Drop the non allergen columns
 sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','dates', 'Date \nContacted'], axis=1)
+# Drop columns where no allergen is listed (for correlation matrix)
 cdf=sdf.dropna(how='all')
 
+# Fix how na values are counted for allergens
 ndf = cdf.fillna(0)
 columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
@@ -117,6 +107,140 @@ for col in columns_to_convert:
 average_allergens = total_allergens/len(ndf)
 matrix = ndf.corr()
 
+#######################################################
+'''Code for the info bar'''
+  
+
+sns.set_theme(style="white")
+
+# Generate a mask for the upper triangle
+mask = np.triu(np.ones_like(matrix, dtype=bool))
+
+# Set up the matplotlib figure
+fig, ax = plt.subplots(figsize=(11, 11))
+
+# Generate a custom diverging colormap
+cmap = sns.diverging_palette(230, 20, as_cmap=True)
+
+# Draw the heatmap with the mask and correct aspect ratio
+fig = px.imshow(matrix,text_auto=True)
+
+# find most common value
+allergen_max = ndf.sum().idxmax()
+second_most_df = ndf.sum()
+second_most_df[allergen_max]=0
+allergen_max2 = second_most_df.idxmax()
+
+# find most correlated values
+sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
+                  .stack()
+                  .sort_values(ascending=False))
+flag = 0
+for index, value in sol.items():
+    if flag == 2:
+        break
+    if flag == 1:
+        allergen3 = index[0]
+        allergen4 = index[1]
+    if flag == 0:
+        allergen1 = index[0]
+        allergen2 = index[1]
+        flag = flag + 1
+
+##############################################################################################################  
+
+'''Implementing info bar'''
+col1, col2 = st.columns([1,2])
+with col1:
+    allergen = "Peanuts"
+    average_allergies = 2.5
+    hall = "Landon"
+    st.subheader(f"Response Summary")
+    st.write(f"Most Common Dietary Issue: **{allergen_max}**")
+    st.write(f"Second Most Common Dietary Issue: **{allergen_max2}**")
+    st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
+    st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
+    st.write(f"Students list an average of **{str(average_allergens)[0:3]}** allergies.")
+with col2:
+    st.subheader(f"Dietary Concerns Correlation Matrix")
+    st.plotly_chart(fig)
+
+#################################################################################################################
+'''stacked dataframe using preprogrammed data.'''
+stacked_df = pd.read_csv("linechart_data.csv")
+#fig = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
+stacked_df["Year"] = pd.to_numeric(stacked_df["Year"], errors='coerce')
+stacked_df["Prop"] = pd.to_numeric(stacked_df["Prop"], errors='coerce')
+fig2 = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
+fig2.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Proportion",
+    legend_title="Dietary Concern",
+)
+
+##################################################################################################################
+'''Create a years column and plot dietary concerns by proportion with it.'''
+dates_ndf = ndf
+dates_ndf["dates"] = df["dates"]
+# create a list of the "Date \nContacted" column in diet_data and name it dates
+dates_series = dates_ndf['dates']
+# remove NaN values from dates
+#for i in range(len(dates_series)):            recently removed this for loop
+#  if type(dates_series.iloc[i]) != str:
+    #dates_series.iloc[i] = "00"
+#dates_series = [date for date in dates_series if type(date) == str]
+# st.write(df["dates"])
+# # take the last 2 digits of each element in dates and name it years
+years = [date[-2:] for date in df['dates']]
+#st.write(years)
+# convert to years
+for i in range(len(years)):
+    years[i] = int(years[i])+2000
+
+# st.write(dates_ndf)
+# for i in range(len(dates_ndf)):
+#   dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[-1])*100
+dates_ndf["years"]= years
+by_year = dates_ndf["years"].value_counts()
+by_year = by_year.sort_index()
+by_year = by_year[by_year.index >=2014]
+
+
+
+# Total Plot
+fig3 = px.line(x = by_year.index, y = by_year)
+fig3.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Responses",
+)
+# st.write(stacked_df)
+# st.write(by_year)
+# total_concerns = []
+# for i in range(len(stacked_df)):
+#   total_concerns.append(stacked_df.iloc[i,"Prop"]*by_year[stacked_df.iloc[i,"Year"]])
+
+# non proportional dietary condition plot
+fig4 = px.line(x = stacked_df["Year"], y = stacked_df["Count"], color = stacked_df["allergy"])
+fig4.update_layout(
+    xaxis_title="Year",
+    yaxis_title="Responses",
+    legend_title="Dietary Concern",
+)
+
+st.subheader("Responses Time Data")
+
+tab1, tab2, tab3 = st.tabs(["Total","By Dietary Concern", "By Dietary Concern (Proportions)"])
+
+tab1.plotly_chart(fig3)
+
+tab2.plotly_chart(fig4)
+
+tab3.plotly_chart(fig2)
+
+
+
+################################################################################################################
+
 #######################################################################################################
 dates_ndf = dates_ndf.reset_index()
 hall_column_string = 'Hall (Living/Eating)'
@@ -124,7 +248,7 @@ unique_years = dates_ndf['years'].unique()
 unique_halls = dates_ndf[hall_column_string].unique()
 valid_halls = ['Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
 filtered_df = pd.DataFrame([], index=unique_years, columns=valid_halls)
-#######################################################################################################
+###############################
 allergen_columns = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                       'Vegetarian','Halal','Kosher']
@@ -184,156 +308,6 @@ fig_subsec.update_layout(
 st.plotly_chart(fig_subsec)
 #fig.show()
 ########################################################################################################
-  
-  
-
-sns.set_theme(style="white")
-
-# Generate a mask for the upper triangle
-mask = np.triu(np.ones_like(matrix, dtype=bool))
-
-# Set up the matplotlib figure
-fig, ax = plt.subplots(figsize=(11, 11))
-
-# Generate a custom diverging colormap
-cmap = sns.diverging_palette(230, 20, as_cmap=True)
-
-# Draw the heatmap with the mask and correct aspect ratio
-fig = px.imshow(matrix,text_auto=True)
-
-# find most common value
-allergen_max = ndf.sum().idxmax()
-second_most_df = ndf.sum()
-second_most_df[allergen_max]=0
-allergen_max2 = second_most_df.idxmax()
-
-# find most correlated values
-sol = (matrix.where(np.triu(np.ones(matrix.shape), k=1).astype(bool))
-                  .stack()
-                  .sort_values(ascending=False))
-flag = 0
-for index, value in sol.items():
-  if flag == 2:
-    break
-  if flag == 1:
-    allergen3 = index[0]
-    allergen4 = index[1]
-  if flag == 0:
-    allergen1 = index[0]
-    allergen2 = index[1]
-  flag = flag + 1
-
-  
-
-
-#######################################################
-col1, col2 = st.columns([1,2])
-with col1:
-  allergen = "Peanuts"
-  average_allergies = 2.5
-  hall = "Landon"
-  st.subheader(f"Response Summary")
-  st.write(f"Most Common Dietary Issue: **{allergen_max}**")
-  st.write(f"Second Most Common Dietary Issue: **{allergen_max2}**")
-  st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
-  st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
-  st.write(f"Students list an average of **{str(average_allergens)[0:3]}** allergies.")
-with col2:
-  st.subheader(f"Dietary Concerns Correlation Matrix")
-  st.plotly_chart(fig)
-
-
-stacked_df = pd.read_csv("linechart_data.csv")
-#fig = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
-stacked_df["Year"] = pd.to_numeric(stacked_df["Year"], errors='coerce')
-stacked_df["Prop"] = pd.to_numeric(stacked_df["Prop"], errors='coerce')
-fig2 = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
-fig2.update_layout(
-    xaxis_title="Year",
-    yaxis_title="Proportion",
-    legend_title="Dietary Concern",
-)
-
-dates_ndf = ndf
-dates_ndf["dates"] = df["dates"]
-# st.write(df["dates"])
-# create a list of the "Date \nContacted" column in diet_data and name it dates
-dates_series = dates_ndf['dates']
-# st.write(dates_series)
-# remove NaN values from dates
-#for i in range(len(dates_series)):            recently removed this for loop
-#  if type(dates_series.iloc[i]) != str:
-    #dates_series.iloc[i] = "00"
-#dates_series = [date for date in dates_series if type(date) == str]
-# st.write(df["dates"])
-# # take the last 2 digits of each element in dates and name it years
-years = [date[-2:] for date in df['dates']]
-#st.write(years)
-# convert to years
-for i in range(len(years)):
-    years[i] = int(years[i])+2000
-
-# st.write(dates_ndf)
-# for i in range(len(dates_ndf)):
-#   dates_ndf.loc[i,"dates"] = int(str(dates_ndf.loc[i,"dates"])[-1])*100
-dates_ndf["years"]= years
-by_year = dates_ndf["years"].value_counts()
-by_year = by_year.sort_index()
-by_year = by_year[by_year.index >=2014]
-
-
-
-# Total Plot
-fig3 = px.line(x = by_year.index, y = by_year)
-fig3.update_layout(
-    xaxis_title="Year",
-    yaxis_title="Responses",
-)
-# st.write(stacked_df)
-# st.write(by_year)
-# total_concerns = []
-# for i in range(len(stacked_df)):
-#   total_concerns.append(stacked_df.iloc[i,"Prop"]*by_year[stacked_df.iloc[i,"Year"]])
-
-# non proportional dietary condition plot
-fig4 = px.line(x = stacked_df["Year"], y = stacked_df["Count"], color = stacked_df["allergy"])
-fig4.update_layout(
-    xaxis_title="Year",
-    yaxis_title="Responses",
-    legend_title="Dietary Concern",
-)
-
-st.subheader("Responses Time Data")
-
-tab1, tab2, tab3 = st.tabs(["Total","By Dietary Concern", "By Dietary Concern (Proportions)"])
-
-tab1.plotly_chart(fig3)
-
-tab2.plotly_chart(fig4)
-
-tab3.plotly_chart(fig2)
-
-
-
-###########################################################
-neighorhoods = pd.read_csv("neighborhood_data.csv")
-
-
-neighorhoods['Year'] = '20' + neighorhoods['Date \nContacted'].str.split('/').str[-1]
-
-
-neighborhood_list = np.array(["south","north","east","brody","rivertrail"])
-grouped_years = neighorhoods.groupby("Year")
-data_2014 = grouped_years.get_group("2014")
-
-fig5 = px.bar(x = neighborhood_list,y = neighorhoods["Neighborhood"].value_counts())
-fig5.update_layout(
-    xaxis_title="Neighborhood",
-    yaxis_title="Count",
-)
-st.subheader("Response Locations")
-st.write(fig5)
-
 
 ############################################################## Final Debugging
 st.write(df)
