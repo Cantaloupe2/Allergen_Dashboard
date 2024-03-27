@@ -135,7 +135,7 @@ cmap = sns.diverging_palette(230, 20, as_cmap=True)
 
 # Draw the heatmap with the mask and correct aspect ratio
 fig = px.imshow(matrix,text_auto=True)
-
+valid_halls = ['Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
 option = st.selectbox(
     'Select Hall',
     valid_halls)
@@ -262,7 +262,6 @@ fig4.update_layout(
 dates_ndf = dates_ndf.reset_index()
 unique_years = dates_ndf['years'].unique()
 unique_halls = dates_ndf[hall_column_string].unique()
-valid_halls = ['Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
 filtered_df = pd.DataFrame([], index=unique_years, columns=valid_halls)
 ###############################
 allergen_columns = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
