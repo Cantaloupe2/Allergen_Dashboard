@@ -280,7 +280,7 @@ filtered_df = filtered_df.drop(2002)
 ##############################
 import plotly.graph_objects as go
 option = st.selectbox(
-    'How would you like to be contacted?',
+    'Select Hall',
     valid_halls)
 hall_select = option
 dict_list = []
