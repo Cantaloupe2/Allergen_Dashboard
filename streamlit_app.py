@@ -188,7 +188,7 @@ fig2.update_layout(
 
 ##################################################################################################################
 #Create a years column and plot dietary concerns by proportion with it.
-dates_ndf = ndf
+dates_ndf = mod_ndf
 dates_ndf["dates"] = df["dates"]
 # create a list of the "Date \nContacted" column in diet_data and name it dates
 dates_series = dates_ndf['dates']
