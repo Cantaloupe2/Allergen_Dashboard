@@ -284,7 +284,7 @@ hall_select = 'Owen'
 dict_list = []
 for i, val in enumerate(filtered_df[hall_select]):
     dict_list.append(val[0])
-    
+data = dict_list
 # Custom x-values
 x_values = filtered_df.index
 
@@ -293,10 +293,10 @@ colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e3
 
 # Create the trace for each category
 traces = []
-for i, (category, color) in enumerate(zip(dict_list.keys(), colors)):
+for i, (category, color) in enumerate(zip(data.keys(), colors)):
     trace = go.Bar(
         x=x_values,
-        y=[d[category] for d in dict_list],
+        y=[d[category] for d in data],
         name=category,
         marker=dict(color=color),
         hoverinfo='y+name'
