@@ -281,7 +281,7 @@ filtered_df = filtered_df.drop(2002)
 ##############################
 import plotly.graph_objects as go
 hall_select = 'Owen'
-dict_list
+dict_list = []
 for i, val in enumerate(filtered_df[hall_select]):
     dict_list.append(val[0])
     
