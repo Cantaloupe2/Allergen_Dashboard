@@ -106,12 +106,21 @@ for col in columns_to_convert:
     ndf[col] = ndf[col].replace('',0)
     total_allergens = total_allergens + ndf[col].sum()
 average_allergens = total_allergens/len(ndf)
+
+matrix_ndf = ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
+             'Specialist','Intial Concern','Hall (Living/Eating)',
+             'Class Type','dates', 'Date \nContacted'], axis=1)
+
+for col in columns_to_convert:
+    matrix_ndf[col] = matrix_ndf[col].replace('x', 1)
+    matrix_ndf[col] = matrix_ndf[col].replace(' ',0)
+    matrix_ndf[col] = matrix_ndf[col].replace('',0)
+    total_allergens = total_allergens + matrix_ndf[col].sum()
+
 st.write(ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
              'Specialist','Intial Concern','Hall (Living/Eating)',
              'Class Type','dates', 'Date \nContacted'], axis=1))
-matrix = ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
-             'Specialist','Intial Concern','Hall (Living/Eating)',
-             'Class Type','dates', 'Date \nContacted'], axis=1).corr()
+matrix = matrix_ndf.corr()
 
 #######################################################
 #Code for the info bar
