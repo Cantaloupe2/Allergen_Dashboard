@@ -293,10 +293,10 @@ colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e3
 
 # Create the trace for each category
 traces = []
-for i, (category, color) in enumerate(zip(dict_list[0].keys(), colors)):
+for i, (category, color) in enumerate(zip(dict_list.keys(), colors)):
     trace = go.Bar(
         x=x_values,
-        y=[d[category] for d in data],
+        y=[d[category] for d in dict_list],
         name=category,
         marker=dict(color=color),
         hoverinfo='y+name'
