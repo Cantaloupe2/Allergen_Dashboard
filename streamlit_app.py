@@ -238,15 +238,15 @@ fig4.update_layout(
     legend_title="Dietary Concern",
 )
 
-st.subheader("Responses Time Data")
+# st.subheader("Responses Time Data")
 
-tab1, tab2, tab3 = st.tabs(["Total","By Dietary Concern", "By Dietary Concern (Proportions)"])
+# tab1, tab2, tab3 = st.tabs(["Total","By Dietary Concern", "By Dietary Concern (Proportions)"])
 
-tab1.plotly_chart(fig3)
+# tab1.plotly_chart(fig3)
 
-tab2.plotly_chart(fig4)
+# tab2.plotly_chart(fig4)
 
-tab3.plotly_chart(fig2)
+# tab3.plotly_chart(fig2)
 
 
 
