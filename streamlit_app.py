@@ -112,10 +112,7 @@ for col in columns_to_convert:
     mod_ndf[col] = mod_ndf[col].replace(' ',0)
     mod_ndf[col] = mod_ndf[col].replace('',0)
     total_allergens = total_allergens + mod_ndf[col].sum()
-
-st.write(ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
-             'Specialist','Intial Concern','Hall (Living/Eating)',
-             'Class Type','dates', 'Date \nContacted'], axis=1))
+    
 matrix = ndf.corr()
 
 #######################################################
