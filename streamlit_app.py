@@ -14,7 +14,7 @@ import gspread
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
 
 #######################################################################################
-'''Pulling in the data from qualtrix pipeline'''
+#Pulling in the data from qualtrix pipeline
 # Set up credentials
 api_key = "AIzaSyD95Gh8QGvJVrW1GnU39NWLd2PS77xr5qE"  # Replace with your API key
 
@@ -40,7 +40,7 @@ diet_data['dates'] =dates
 df = diet_data
 
 #######################################################
-'''Convert Date times to correct format if not already''' 
+#Convert Date times to correct format if not already
 def format_date(date_str):
     try:
         # Attempt to parse the date
@@ -64,7 +64,7 @@ df['dates'] = df['dates'].apply(format_date)
 df = df[df['dates'].notna()]
 
 ###########################################################
-''' convert mess of strings to X marks'''
+#convert mess of strings to X marks
 columns_to_check = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                       'Vegetarian','Halal','Kosher']
@@ -82,7 +82,7 @@ for index, row in df.iterrows():
             # If not present, mark the column with ''
             df.at[index, column] = ''
 #############################################################
-'''Create several modified dataframes'''
+#Create several modified dataframes
 #drop entries with no date
 df = df[df['dates'].notna()]
 # Drop the non allergen columns
@@ -108,7 +108,7 @@ average_allergens = total_allergens/len(ndf)
 matrix = ndf.corr()
 
 #######################################################
-'''Code for the info bar'''
+#Code for the info bar
   
 
 sns.set_theme(style="white")
@@ -149,7 +149,7 @@ for index, value in sol.items():
 
 ##############################################################################################################  
 
-'''Implementing info bar'''
+#Implementing info bar#
 col1, col2 = st.columns([1,2])
 with col1:
     allergen = "Peanuts"
@@ -166,7 +166,7 @@ with col2:
     st.plotly_chart(fig)
 
 #################################################################################################################
-'''stacked dataframe using preprogrammed data.'''
+#stacked dataframe using preprogrammed data.#
 stacked_df = pd.read_csv("linechart_data.csv")
 #fig = px.line(x = stacked_df["Year"], y = stacked_df["Prop"], color = stacked_df["allergy"])
 stacked_df["Year"] = pd.to_numeric(stacked_df["Year"], errors='coerce')
@@ -179,7 +179,7 @@ fig2.update_layout(
 )
 
 ##################################################################################################################
-'''Create a years column and plot dietary concerns by proportion with it.'''
+#Create a years column and plot dietary concerns by proportion with it.
 dates_ndf = ndf
 dates_ndf["dates"] = df["dates"]
 # create a list of the "Date \nContacted" column in diet_data and name it dates
