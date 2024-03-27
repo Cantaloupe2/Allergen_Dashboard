@@ -42,7 +42,7 @@ df = diet_data
 
 
 @st.cache_data
-    def main_sequence()
+def main_sequence():
     #######################################################
     #Convert Date times to correct format if not already
     def format_date(date_str):
