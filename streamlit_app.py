@@ -117,7 +117,73 @@ for col in columns_to_convert:
 average_allergens = total_allergens/len(ndf)
 matrix = ndf.corr()
 
-#######################################################
+#######################################################################################################
+dates_ndf = dates_ndf.reset_index()
+hall_column_string = 'Hall (Living/Eating)'
+unique_years = dates_ndf['years'].unique()
+unique_halls = dates_ndf[hall_column_string].unique()
+valid_halls = ['Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
+filtered_df = pd.DataFrame([], index=unique_years, columns=valid_halls)
+#######################################################################################################
+allergen_columns = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
+                      'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
+                      'Vegetarian','Halal','Kosher']
+dictionary_template = {}
+for val in allergen_columns:
+    dictionary_template[val] = 0
+###############################    
+for i, hall in enumerate(valid_halls):
+    for j, year in enumerate(unique_years):
+        temp_dictionary = copy.deepcopy(dictionary_template)
+        for k, allergen in enumerate(allergen_columns):
+            allergen_count = 0
+            for l, row in enumerate(dates_ndf[allergen]):
+                if dates_ndf['years'][l] == year:
+                    if dates_ndf[hall_column_string][l] == hall:
+                        allergen_count += row
+            temp_dictionary[allergen] = allergen_count
+        filtered_df.iloc[j,i] = [temp_dictionary]
+filtered_df = filtered_df.drop(2002)
+##############################
+import plotly.graph_objects as go
+hall_select = 'Owen'
+dict_list
+for i, val in enumerate(filtered_df[hall_select]):
+    dict_list.append(val[0])
+    
+# Custom x-values
+x_values = filtered_df.index
+
+# Create a list of colors for each category
+colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf', '#b03c9e', '#ff5733', '#4a4a4a']
+
+# Create the trace for each category
+traces = []
+for i, (category, color) in enumerate(zip(data[0].keys(), colors)):
+    trace = go.Bar(
+        x=x_values,
+        y=[d[category] for d in data],
+        name=category,
+        marker=dict(color=color),
+        hoverinfo='y+name'
+    )
+    traces.append(trace)
+
+# Create the figure
+fig_subsec = go.Figure(data=traces)
+
+# Add layout details
+fig_subsec.update_layout(
+    title=hall_select+" Hall Dietary Survey Data",
+    xaxis=dict(title="Index",tickvals=x_values),
+    yaxis=dict(title="Quantity"),
+    barmode="stack"
+)
+
+# Show the figure
+st.plotly_chart(fig_subsec)
+#fig.show()
+########################################################################################################
   
   
 
