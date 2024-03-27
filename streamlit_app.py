@@ -94,6 +94,8 @@ cdf=sdf.dropna(how='all')
 
 # Fix how na values are counted for allergens
 ndf = cdf.fillna(0)
+ndf = df.dropna(how='all')
+ndf = ndf.fillna(0)
 columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
                       'Tree Nuts','Sesame','Soy','Wheat/Gluten','Vegan',
                       'Vegetarian','Halal','Kosher']
