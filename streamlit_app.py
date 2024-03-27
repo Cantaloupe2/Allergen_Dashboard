@@ -136,9 +136,15 @@ cmap = sns.diverging_palette(230, 20, as_cmap=True)
 # Draw the heatmap with the mask and correct aspect ratio
 fig = px.imshow(matrix,text_auto=True)
 
+option = st.selectbox(
+    'Select Hall',
+    valid_halls)
+hall_column_string = 'Hall (Living/Eating)'
+stats_df = ndf[ndf[hall_column_string] == option]
+
 # find most common value
-allergen_max = ndf.sum().idxmax()
-second_most_df = ndf.sum()
+allergen_max = stats_df.sum().idxmax()
+second_most_df = stats_df.sum()
 second_most_df[allergen_max]=0
 allergen_max2 = second_most_df.idxmax()
 
@@ -254,7 +260,6 @@ fig4.update_layout(
 
 #######################################################################################################
 dates_ndf = dates_ndf.reset_index()
-hall_column_string = 'Hall (Living/Eating)'
 unique_years = dates_ndf['years'].unique()
 unique_halls = dates_ndf[hall_column_string].unique()
 valid_halls = ['Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
