@@ -93,7 +93,6 @@ sdf=df.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
 cdf=sdf.dropna(how='all')
 
 # Fix how na values are counted for allergens
-ndf = cdf.fillna(0)
 ndf = df.dropna(how='all')
 ndf = ndf.fillna(0)
 columns_to_convert = ['Eggs', 'Milk', 'Fish','Shellfish','Peanuts',
@@ -107,7 +106,9 @@ for col in columns_to_convert:
     ndf[col] = ndf[col].replace('',0)
     total_allergens = total_allergens + ndf[col].sum()
 average_allergens = total_allergens/len(ndf)
-matrix = ndf.corr()
+matrix = ndf.drop(['Major','RCPD','Other','Notes','Dining Accommodation',
+             'Specialist','Intial Concern','Hall (Living/Eating)',
+             'Class Type','dates', 'Date \nContacted'], axis=1).corr()
 
 #######################################################
 #Code for the info bar
