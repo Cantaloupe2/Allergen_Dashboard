@@ -300,8 +300,16 @@ import plotly.graph_objects as go
 #     valid_halls)
 hall_select = option
 dict_list = []
-for i, val in enumerate(filtered_df[hall_select]):
-    dict_list.append(val[0])
+if hall_select == 'All':
+    for i, row in df.itterrows():
+        sum_total = 0
+        for j, val in enumerate(row):
+            sum_total += val[0]
+        dict_list.append(val[0])
+
+else:
+    for i, val in enumerate(filtered_df[hall_select]):
+        dict_list.append(val[0])
 data = dict_list
 # Custom x-values
 x_values = filtered_df.index
