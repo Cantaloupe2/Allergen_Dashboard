@@ -145,7 +145,7 @@ else:
 total_allergens = 0
 for col in columns_to_convert:
     total_allergens = total_allergens + stats_df[col].sum()
-average_allergens = total_allergens/len(ndf)
+average_allergens = total_allergens/len(stats_df.index)
 
 
 # find most common value
