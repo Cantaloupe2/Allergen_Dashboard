@@ -133,12 +133,15 @@ cmap = sns.diverging_palette(230, 20, as_cmap=True)
 
 # Draw the heatmap with the mask and correct aspect ratio
 fig = px.imshow(matrix,text_auto=True)
-valid_halls = ['Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
+valid_halls = ['All','Akers','Brody',"Case","Holden","Holmes",'Landon','Owen', 'Shaw', 'Snyder']
 option = st.selectbox(
     'Select Hall',
     valid_halls)
-hall_column_string = 'Hall (Living/Eating)'
-stats_df = ndf[mod_ndf[hall_column_string] == option]
+if option == 'All':
+    stats_df = ndf
+else:
+    hall_column_string = 'Hall (Living/Eating)'
+    stats_df = ndf[mod_ndf[hall_column_string] == option]
 for col in columns_to_convert:
     total_allergens = total_allergens + stats_df[col].sum()
 average_allergens = total_allergens/len(ndf)
