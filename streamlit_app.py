@@ -278,7 +278,7 @@ for val in allergen_columns:
     dictionary_template[val] = 0
 ###############################    
 @st.cache_data
-def main_sequence(filtered_df):
+def load_data(filtered_df):
     for i, hall in enumerate(valid_halls):
         for j, year in enumerate(unique_years):
             temp_dictionary = copy.deepcopy(dictionary_template)
@@ -292,7 +292,7 @@ def main_sequence(filtered_df):
             filtered_df.iloc[j,i] = [temp_dictionary]
     filtered_df = filtered_df.drop(2002)
     return filtered_df
-filtered_df = main_sequence(filtered_df)
+filtered_df = load_data(filtered_df)
 ##############################
 import plotly.graph_objects as go
 # option = st.selectbox(
