@@ -1,5 +1,6 @@
 # Imports
 import warnings
+from collections import Counter
 warnings.simplefilter(action='ignore',category=FutureWarning)
 import copy
 import pandas as pd
@@ -304,12 +305,14 @@ import plotly.graph_objects as go
 #     valid_halls)
 hall_select = option
 dict_list = []
+def combine_dicts(*dicts):
+    return sum((Counter(d) for d in dicts), Counter())
 if hall_select == 'All':
     for i, row in filtered_df.iterrows():
         sum_total = {}
         for j, val in enumerate(row):
             st.write(val)
-            sum_total = sum_total + val[0]
+            sum_total = combine_dicts(sum_total,val[0])
         dict_list.append(sum_total)
 
 else:
