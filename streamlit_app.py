@@ -115,7 +115,7 @@ for col in columns_to_convert:
     total_allergens = total_allergens + mod_ndf[col].sum()
 
 st.write(ndf)
-matrix = ndf.corr()
+matrix = ndf.drop(['Unnamed: 23','Unnamed: 24'],axis = 1).corr()
 
 #######################################################
 #Code for the info bar
