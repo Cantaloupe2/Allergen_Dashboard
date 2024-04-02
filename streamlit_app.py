@@ -341,16 +341,17 @@ fig_subsec.update_layout(
     yaxis=dict(title="Quantity"),
     barmode="stack"
 )
-row1_1 = st.columns([1])
-row2_1, row2_2 = st.columns([1,2])
-# Show the figure
-with row1_1:
-    st.plotly_chart(fig_subsec)
-#fig.show()
+# row1_1 = st.columns([1])
+# row2_1, row2_2 = st.columns([1,2])
+# # Show the figure
+# with row1_1:
+#     st.plotly_chart(fig_subsec)
+# #fig.show()
+st.plotly_chart(fig_subsec)
 ########################################################################################################
 
-#col1, col2 = st.columns([1,2])
-with row2_1:
+col1, col2 = st.columns([1,2])
+with col1:
     allergen = "Peanuts"
     average_allergies = 2.5
     hall = "Landon"
@@ -360,7 +361,7 @@ with row2_1:
     st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
     st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
     st.write(f"Students list an average of **{str(average_allergens)[0:5]}** allergies.")
-with row2_2:
+with col2:
     st.subheader(f"Dietary Concerns Correlation Matrix")
     st.plotly_chart(fig)
 
