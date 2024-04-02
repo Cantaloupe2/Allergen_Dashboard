@@ -271,7 +271,6 @@ fig4.update_layout(
 #######################################################################################################
 dates_ndf = dates_ndf.reset_index()
 unique_years = dates_ndf['years'].unique()
-st.write(dates_ndf)
 unique_halls = dates_ndf[hall_column_string].unique()
 filtered_df = pd.DataFrame([], index=unique_years, columns=valid_halls)
 ###############################
@@ -308,6 +307,8 @@ dict_list = []
 if hall_select == 'All':
     for i, row in filtered_df.itterrows():
         sum_total = 0
+        if i == 0:
+            st.write(row)
         for j, val in enumerate(row):
             sum_total += val[0]
         dict_list.append(sum_total)
