@@ -1,4 +1,6 @@
 # Imports
+import warnings
+warnings.simplefilter(action='ignore',category=FutureWarning)
 import copy
 import pandas as pd
 import streamlit as st
@@ -13,7 +15,6 @@ import plotly.express as px
 from datetime import datetime
 import gspread
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
-
 ####################################################################################
 #Initializing Streamlit
 st.title("Dietary Data Survey Dashboard")
