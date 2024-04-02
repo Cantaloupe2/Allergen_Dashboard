@@ -114,7 +114,6 @@ for col in columns_to_convert:
     mod_ndf[col] = mod_ndf[col].replace('',0)
     total_allergens = total_allergens + mod_ndf[col].sum()
 
-st.write(ndf)
 matrix = ndf.drop(['Unnamed: 23','Unnamed: 24'],axis = 1).corr()
 
 #######################################################
