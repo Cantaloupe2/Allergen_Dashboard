@@ -308,7 +308,8 @@ if hall_select == 'All':
     for i, row in filtered_df.iterrows():
         sum_total = 0
         for j, val in enumerate(row):
-            sum_total += val[0]
+            st.write(val)
+            sum_total = sum_total + val[0]
         dict_list.append(sum_total)
 
 else:
