@@ -270,6 +270,7 @@ fig4.update_layout(
 #######################################################################################################
 dates_ndf = dates_ndf.reset_index()
 unique_years = dates_ndf['years'].unique()
+st.write(dates_ndf)
 unique_halls = dates_ndf[hall_column_string].unique()
 filtered_df = pd.DataFrame([], index=unique_years, columns=valid_halls)
 ###############################
