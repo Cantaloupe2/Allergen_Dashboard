@@ -303,11 +303,11 @@ import plotly.graph_objects as go
 hall_select = option
 dict_list = []
 if hall_select == 'All':
-    for i, row in df.itterrows():
+    for i, row in filtered_df.itterrows():
         sum_total = 0
         for j, val in enumerate(row):
             sum_total += val[0]
-        dict_list.append(val[0])
+        dict_list.append(sum_total)
 
 else:
     for i, val in enumerate(filtered_df[hall_select]):
