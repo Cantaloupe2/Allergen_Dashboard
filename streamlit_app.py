@@ -341,7 +341,7 @@ fig_subsec.update_layout(
     yaxis=dict(title="Quantity"),
     barmode="stack"
 )
-row1_1 = st.columns(1)
+row1_1 = st.columns([1])
 row2_1, row2_2 = st.columns([1,2])
 # Show the figure
 with row1_1:
