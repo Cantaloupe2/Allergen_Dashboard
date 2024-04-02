@@ -138,7 +138,7 @@ option = st.selectbox(
     'Select Hall',
     valid_halls)
 hall_column_string = 'Hall (Living/Eating)'
-stats_df = ndf[mod_ndf[hall_column_string] == option]
+stats_df = ndf[mod_ndf[hall_column_string] in option]
 for col in columns_to_convert:
     total_allergens = total_allergens + stats_df[col].sum()
 average_allergens = total_allergens/len(ndf)
