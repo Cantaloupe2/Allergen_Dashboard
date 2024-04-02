@@ -311,7 +311,6 @@ if hall_select == 'All':
     for i, row in filtered_df.iterrows():
         sum_total = {}
         for j, val in enumerate(row):
-            st.write(val)
             sum_total = combine_dicts(sum_total,val[0])
         dict_list.append(sum_total)
 
