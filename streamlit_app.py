@@ -138,7 +138,7 @@ option = st.selectbox(
     'Select Hall',
     valid_halls)
 if option == 'All':
-    stats_df = ndf
+    stats_df = ndf[mod_ndf[hall_column_string] != 'silly_string']
 else:
     hall_column_string = 'Hall (Living/Eating)'
     stats_df = ndf[mod_ndf[hall_column_string] == option]
