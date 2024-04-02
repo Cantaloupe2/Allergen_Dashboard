@@ -14,6 +14,10 @@ from datetime import datetime
 import gspread
 from gspread_dataframe import get_as_dataframe, set_with_dataframe
 
+####################################################################################
+#Initializing Streamlit
+st.title("Dietary Data Survey Dashboard")
+
 #######################################################################################
 #Pulling in the data from qualtrix pipeline
 # Set up credentials
