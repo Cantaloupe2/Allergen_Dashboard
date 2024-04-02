@@ -17,7 +17,6 @@ from gspread_dataframe import get_as_dataframe, set_with_dataframe
 ####################################################################################
 #Initializing Streamlit
 st.title("Dietary Data Survey Dashboard")
-
 #######################################################################################
 #Pulling in the data from qualtrix pipeline
 # Set up credentials
@@ -175,22 +174,21 @@ for index, value in sol.items():
         flag = flag + 1
 
 ##############################################################################################################  
-
-#Implementing info bar#
-col1, col2 = st.columns([1,2])
-with col1:
-    allergen = "Peanuts"
-    average_allergies = 2.5
-    hall = "Landon"
-    st.subheader(f"Response Summary")
-    st.write(f"Most Common Dietary Issue: **{allergen_max}**")
-    st.write(f"Second Most Common Dietary Issue: **{allergen_max2}**")
-    st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
-    st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
-    st.write(f"Students list an average of **{str(average_allergens)[0:5]}** allergies.")
-with col2:
-    st.subheader(f"Dietary Concerns Correlation Matrix")
-    st.plotly_chart(fig)
+# #Implementing info bar#
+# col1, col2 = st.columns([1,2])
+# with col1:
+#     allergen = "Peanuts"
+#     average_allergies = 2.5
+#     hall = "Landon"
+#     st.subheader(f"Response Summary")
+#     st.write(f"Most Common Dietary Issue: **{allergen_max}**")
+#     st.write(f"Second Most Common Dietary Issue: **{allergen_max2}**")
+#     st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
+#     st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
+#     st.write(f"Students list an average of **{str(average_allergens)[0:5]}** allergies.")
+# with col2:
+#     st.subheader(f"Dietary Concerns Correlation Matrix")
+#     st.plotly_chart(fig)
 
 #################################################################################################################
 #stacked dataframe using preprogrammed data.#
@@ -343,11 +341,28 @@ fig_subsec.update_layout(
     yaxis=dict(title="Quantity"),
     barmode="stack"
 )
-
+row1_1 = st.columns(1)
+row2_1, row2_2 = st.columns([1,2])
 # Show the figure
-st.plotly_chart(fig_subsec)
+with row1_1:
+    st.plotly_chart(fig_subsec)
 #fig.show()
 ########################################################################################################
+
+#col1, col2 = st.columns([1,2])
+with row2_1:
+    allergen = "Peanuts"
+    average_allergies = 2.5
+    hall = "Landon"
+    st.subheader(f"Response Summary")
+    st.write(f"Most Common Dietary Issue: **{allergen_max}**")
+    st.write(f"Second Most Common Dietary Issue: **{allergen_max2}**")
+    st.write(f"Most Correlated Dietary Issues: **{allergen1}** and **{allergen2}**")
+    st.write(f"Second Most Correlated Dietary Issues: **{allergen3}** and **{allergen4}**")
+    st.write(f"Students list an average of **{str(average_allergens)[0:5]}** allergies.")
+with row2_2:
+    st.subheader(f"Dietary Concerns Correlation Matrix")
+    st.plotly_chart(fig)
 
 ############################################################## Final Debugging
 # st.write(df)
